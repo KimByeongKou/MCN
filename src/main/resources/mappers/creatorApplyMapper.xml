@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.eney.mapper.creatorApplyMapper">
+
+  <resultMap id="CreatorApplyDTO" type="org.eney.domain.CreatorApplyDTO">
+		
+		<result property="applyNo" column="cr_apply_no" />
+		<result property="memberNo" column="m_member_no" />
+		<result property="name" column="cr_name" />
+		<result property="email" column="cr_email" />
+		<result property="phoneNum" column="cr_phone_num" />
+		
+		<result property="otherSns" column="cr_other_sns" />
+		<result property="facebook" column="cr_facebook" />
+		<result property="youtubeAfrica" column="cr_youtube_africe" />
+		<result property="applyInfo" column="cr_apply_info" />
+		<result property="applyTime" column="cr_apply_time" />
+		<result property="isAccepted" column="cr_is_accepted" />
+		
+		
+	</resultMap>
+	
+	
+	
+	<insert id="createCreatorApply" >
+		insert into tbl_creator_apply (m_member_no, cr_name, cr_email, cr_phone_num, cr_youtube_africa, cr_facebook, cr_other_sns, cr_apply_info,  cr_is_accepted)
+		values (#{m_member_no}, #{cr_name}, #{cr_email}, #{cr_phone_num}, #{cr_youtube_africa}, #{cr_facebook}, #{cr_other_sns}, #{cr_apply_info}, #{cr_is_accepted})
+	</insert>
+	
+	
+	<delete id="deleteCreatorApply">
+		delete from tbl_creator_apply
+		where cr_apply_no = #{cr_apply_no}
+	</delete>
+	
+	
+	
+	<select id="searchCreatorApplyAll" resultMap="CreatorApplyDTO">
+		select *
+		from tbl_creator_apply
+	</select>
+	
+	
+	<select id="searchCreatorApplyByCreatorApplyNo" resultMap="CreatorApplyDTO">
+		select *
+		from tbl_creator_apply
+		where cr_apply_no = #{cr_apply_no}
+	</select>
+	
+	
+	<!--  서치 바이 네임 부터~! 하고 테스팅 들어가기~~-->
+	
+</mapper>  
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.eney.mapper.advertiserApplyMapper">
+
+	<resultMap id="AdvertiserApplyDTO" type="org.eney.domain.AdvertiserApplyDTO">
+		
+		<result property="applyNo" column="ad_apply_no" />
+		<result property="memberNo" column="m_member_no" />
+		<result property="name" column="ad_name" />
+		<result property="companyName" column="ad_company_name" />
+		<result property="email" column="ad_email" />
+		<result property="phoneNum" column="ad_phone_num" />
+		<result property="concept" column="ad_concept" />
+		<result property="budget" column="ad_budget" />
+		<result property="applyInfo" column="ad_apply_info" />
+		<result property="applyTime" column="ad_apply_time" />
+		<result property="isAccepted" column="ad_is_accepted" />
+		
+		
+	</resultMap>
+	
+	<insert id="createAdvertiserApply">
+		insert into tbl_ad_apply (m_member_no, ad_company_name, ad_name, ad_email, ad_phone_num, ad_concept, ad_budget, ad_apply_info, ad_is_accepted)
+		values (#{m_member_no}, #{ad_company_name}, #{ad_name}, #{ad_email}, #{ad_phone_num}, #{ad_concept}, #{ad_budget}, #{ad_apply_info},  #{ad_is_accepted})
+	</insert>
+	
+	<delete id="deleteAdvertiserApply">
+		delete from tbl_ad_apply
+		where ad_apply_no = #{ad_apply_no}
+	</delete>
+	
+  	
+  	<select id="searchAdvertiserApplyAll" resultMap="AdvertiserApplyDTO">
+  		SELECT *
+  		from tbl_ad_apply
+  	</select>
+  	
+  	<select id="searchAdvertiserApplyByAdvertiserApplyNo"  resultMap="AdvertiserApplyDTO">
+  		select *
+  		from tbl_ad_apply
+  		where ad_apply_no = #{ad_apply_no}
+  	</select>
+  	
+  	<select id="searchAdvertiserApplyByCompany"  resultMap="AdvertiserApplyDTO">
+  		select *
+  		from tbl_ad_apply
+  		where ad_company_name IN #{ad_company_name}
+  	</select>
+  
+  	<select id="searchAdvertiserApplyByEmail"  resultMap="AdvertiserApplyDTO">
+  		select *
+  		from tbl_ad_apply
+  		where ad_email IN #{ad_email}
+  	</select>
+  	
+  	<select id="searchAdvertiserApplyByPhone"  resultMap="AdvertiserApplyDTO">
+  		select *
+  		from tbl_ad_apply
+  		where ad_phone_num IN #{ad_phone_num}
+  	</select>
+  	
+  	<select id="searchAdvertiserApplyByConcept"  resultMap="AdvertiserApplyDTO">
+  		select *
+  		from tbl_ad_apply
+  		where ad_concept IN #{ad_concept}
+  	</select>
+  	
+  	<select id="searchAdvertiserApplyByBudget"  resultMap="AdvertiserApplyDTO">
+  		select * 
+  		from tbl_ad_apply
+  		where ad_budget > #{min_budget}
+	  	and #{max_budget} > ad_budget
+  	</select>
+  
+</mapper>  
+

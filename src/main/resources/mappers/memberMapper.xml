@@ -3,37 +3,81 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="org.eney.mapper.MemberMapper">
+<mapper namespace="org.eney.mapper.memberMapper">
 
-  <select id="getTime" resultType="string">
-  select now()
-  </select>
-  
-  <!-- 
-  <insert id="insertMember" >
-  insert into tbl_member (userid,userpw, username, email) values
-  (#{userid}, #{userpw}, #{username}, #{email})
-  </insert>
+	
+	
+	<resultMap id="MemberDTO" type="org.eney.domain.MemberDTO">
+		
+		<result property="memberNo" column="m_member_no" />
+		<result property="name" column="m_name" />
+		<result property="email" column="m_email" />
+		<result property="phoneNum" column="m_phone_num" />
+		<result property="regDate" column="m_reg_date" />
+		
+	</resultMap>
 
-  <select id="selectMember" 
-          resultType="spring.bk.domain.MemberVO">
-  select 
-    * 
-  from 
-    tbl_member 
-  where userid = #{userid}
-  </select>
+
+
+
+	<select id="searchMemberAll" resultMap="MemberDTO">
+  		select *
+  		from tbl_member
+  	</select>
+
+
+
+	<insert id="createMember">
+		insert into tbl_member (m_name, m_email, m_phone_num) 
+		values (#{m_name}, #{m_email}, #{m_phone_num})
+	</insert>
+	
   
-  <select id="readWithPW" 
-         resultType="spring.bk.domain.MemberVO">
-  select 
-    * 
-  from 
-    tbl_member 
-  where 
-    userid = #{userid} and userpw = #{userpw}
-  </select>
-   -->
-  
+  	
+  	<select id="searchMemberOverview" resultType="org.eney.domain.MemberDTO">
+  		select *
+  		from tbl_member
+  		where m_member_no = #{m_member_no}
+  	</select>
+  	
+  	
+  	
+  	
+  	
+  	<update id="updateMemberToCreator">
+  		update tbl_member_class
+  		set m_class_name = #{creator_string}
+  		where m_member_no = #{m_member_no}
+  		
+  	</update>
+  	
+  	
+  	
+  	
+  	<update id="updateCreatorToMember">
+  		update tbl_member_class
+  		where m_member_no = #{m_member_no}
+  		set m_class_name = #{member_string}
+  	</update>
+  	
+  	<update id="updateMemberToAdvertiser">
+  		update tbl_member_class
+  		where m_member_no = #{m_member_no}
+  		set m_class_name = #{advertiser_string}
+  	</update>
+  	
+  	<update id="updateAdvertiserToMember">
+  		update tbl_member_class
+  		where m_member_no = #{m_member_no}
+  		set m_class_name = #{member_string}
+  	</update>
+  	
+  	
+  	<delete id="deleteMember">
+  		delete from tbl_member
+  		where m_member_no = #{m_member_no} 
+  	</delete>
+  	
+  	
 </mapper>  
 

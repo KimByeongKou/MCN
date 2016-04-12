@@ -31,7 +31,7 @@ public class SampleControllerTest {
     
     
     /*
-     * WAS ?—†?´ ì»¨íŠ¸ë¡¤ëŸ¬ë¥? ?…Œ?Š¤?Š¸?•´ë³? ?ˆ˜ ?ˆ?‹¤.
+     * WAS ì—†ì´ ì»¨íŠ¸ë¡¤ëŸ¬ë¥¼ í…ŒìŠ¤íŠ¸ í•´ ë³¼ìˆ˜ ìˆìŒ
      */
     @Before
     public void setup() {
@@ -41,7 +41,8 @@ public class SampleControllerTest {
     
     @Test
     public void testDoA() throws Exception{
-    	mockMvc.perform(MockMvcRequestBuilders.get("/doE"));
+    	
+    	mockMvc.perform(MockMvcRequestBuilders.get("/"));
     }
 
 }

@@ -59,15 +59,16 @@
 	
 	<!--
 	  트랜잭션 설정을 위한 빈. 
-	Transactional 애노테이션을 사용하면 해당 메서드에서 자동으로 트랜잭션 처리가 된다. 
+	Transactional 애노테이션을 사용.
 	-->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
+
 	<!--  해당 패키지를 스킨하여 빈을 생성한다. -->
-	<context:component-scan base-package="spring.bk.dao"></context:component-scan>
-	<context:component-scan base-package="spring.bk.daoimpl"></context:component-scan>
+	<context:component-scan base-package="org.eney.dao"></context:component-scan>
+	<context:component-scan base-package="org.eney.daoimpl"></context:component-scan>
 
 
 	<!--  트랜잭션을 애노테이션 기반으로 처리하겠다는 선언  -->

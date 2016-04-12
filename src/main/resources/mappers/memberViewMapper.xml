@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.eney.mapper.memberViewMapper">
+
+
+  	<resultMap id="MemberVDTO" type="org.eney.domain.MemberVDTO">
+			
+			<result property="memberNo" column="m_member_no" />
+			<result property="name" column="m_name" />
+			<result property="email" column="m_email" />
+			<result property="phoneNum" column="m_phone_num" />
+			<result property="regDate" column="m_reg_date" />
+			<result property="className" column="m_class_name" />
+			
+	</resultMap>
+	
+	<select id="searchMemberViewOverView" resultMap="MemberVDTO">
+		select *
+		from view_member
+	</select>
+	
+	
+	<select id="searchMemberViewAll" resultMap="MemberVDTO">
+		select *
+		from view_member
+		where m_member_no = #{m_member_no}
+	</select>
+	
+	
+</mapper>  
+
