@@ -23,68 +23,120 @@ public class MemberDAOImpl implements MemberDAO{
 	
 	private static final String namespace =
 			"org.eney.mapper.memberMapper";
-	
-	
-	
-	public String getTime() {
-	//	transactionManager.
-		return sqlSession.selectOne(namespace+".getTime");
-	}
-	
-	
-	
+
+
 	@Override
-	public Integer createMember(String name, String email, String phone) {
+	public Integer createMember(String name, String userId, String accessToken) {
 		// TODO Auto-generated method stub
-		
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		
 		paramMap.put("m_name", name);
-		paramMap.put("m_email", email);
-		paramMap.put("m_phone_num", phone);
+		paramMap.put("m_user_id", userId);
+		paramMap.put("m_access_token", accessToken);
 		
-		
-		System.out.println(paramMap);
 		
 		return sqlSession.insert(namespace+".createMember", paramMap);
 	}
 
 	
 	
-	@Override
-	public MemberDTO searchMemberOverview(Integer memberNo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Integer deleteMember(Integer memberNo) {
-		// TODO Auto-generated method stub
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		
-		paramMap.put("m_member_no", memberNo);
-		return sqlSession.delete(namespace+".deleteMember", paramMap);
-	}
-
-
-
-	@Override
-	public List<MemberDTO> searchMemberAll() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList(namespace+".searchMemberAll");
-	}
-
-
 
 	@Override
 	public int updateMemberToCreator(Integer memberNo) {
 		// TODO Auto-generated method stub
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		
+		paramMap.put("creator_string", "creator");
 		paramMap.put("m_member_no", memberNo);
-		paramMap.put("creator_string", (String)"crecre");
-		
 		return sqlSession.update(namespace+".updateMemberToCreator", paramMap);
 	}
+
+
+	@Override
+	public Integer updateCreatorToMember(String memberNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<MemberDTO> searchMemberAll() {
+		// TODO Auto-generated method stub
+
+		return sqlSession.selectList(namespace+".searchMemberAll");
+	}
+
+
+	@Override
+	public Integer searchMemberNo(String userId) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("m_user_id", userId);
+		return sqlSession.selectOne(namespace+".searchNewId", paramMap);
+	}
+
+
+	@Override
+	public MemberDTO searchMemberByMemberNo(Integer memberNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<MemberDTO> searchMemberByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public MemberDTO searchMemberByUserId(String userId) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("m_user_id", userId);
+		return sqlSession.selectOne(namespace+".searchMemberByUserId", paramMap);
+	}
+
+
+	@Override
+	public MemberDTO searchMemberByAccessToken(String accessToken) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Integer deleteMember(Integer memberNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	//가입이후 할당된 멤버 넘버를 가져오기 위한 메서드
+	@Override
+	public Integer searchNewId(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	@Override
+	public Integer searchAdmin(String userId, String name, Integer memberNo) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("m_user_id", userId);
+		paramMap.put("m_name", name);
+		paramMap.put("m_member_no", memberNo);
+		return sqlSession.selectOne(namespace+".searchAdmin", paramMap);
+	}
+
 
 }

@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class Apply {
 
-	private Integer applyNo;
-	private Integer memberNo;
-	private String name;
-	private String email;
-	private String phoneNum;
-	private String applyInfo;
-	private Date applyTime;
-	private Boolean isAccepted;
+	protected Integer applyNo;
+	protected Integer memberNo;
+	protected String name;
+	protected String email;
+	protected String phoneNum;
+	protected String applyInfo;
+	protected Date applyTime;
+	protected Boolean isAccepted;
 	
 
 	
@@ -26,6 +26,7 @@ public class Apply {
 		applyTime = new Date();
 		isAccepted = new Boolean(false);
 	}
+	
 	public Apply(Integer applyNo, Integer memberNo, String name, String email, String phoneNum, String applyInfo,
 			Date applyTime, Boolean isAccepted) {
 		super();
@@ -86,5 +87,10 @@ public class Apply {
 	public void setIsAccepted(Boolean isAccepted) {
 		this.isAccepted = isAccepted;
 	}
-	
+	@Override
+	public String toString() {
+		return "Apply [applyNo=" + applyNo + ", memberNo=" + memberNo + ", name=" + name + ", email=" + email
+				+ ", phoneNum=" + phoneNum + ", applyInfo=" + applyInfo + ", applyTime=" + applyTime + ", isAccepted="
+				+ isAccepted + "]";
+	}
 }

@@ -4,32 +4,35 @@ import java.util.Date;
 
 public class MemberDTO {
 
-	private int memberNo;
+	private Integer memberNo;
 	private String name;
-	private String phoneNum;
+	private String userId;
+	private String accessToken;
 	private Date regDate;
-	private String email;
 	
 	public MemberDTO() {
 		super();
+		memberNo = new Integer(0);
+		name = new String();
+		userId = new String();
+		accessToken = new String();
+		regDate = new Date();
 	}
 
-	public MemberDTO(int memberNo, String name, String phoneNum, Date regDate, String email) {
+	public MemberDTO(Integer memberNo, String name, String userId, String accessToken, Date regDate) {
 		super();
 		this.memberNo = memberNo;
 		this.name = name;
-		this.phoneNum = phoneNum;
+		this.userId = userId;
+		this.accessToken = accessToken;
 		this.regDate = regDate;
-		this.email = email;
 	}
 
-
-
-	public int getMemberNo() {
+	public Integer getMemberNo() {
 		return memberNo;
 	}
 
-	public void setMemberNo(int memberNo) {
+	public void setMemberNo(Integer memberNo) {
 		this.memberNo = memberNo;
 	}
 
@@ -41,12 +44,20 @@ public class MemberDTO {
 		this.name = name;
 	}
 
-	public String getPhoneNum() {
-		return phoneNum;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getAccessToken() {
+		return accessToken;
+	}
+
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
 	}
 
 	public Date getRegDate() {
@@ -57,18 +68,12 @@ public class MemberDTO {
 		this.regDate = regDate;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
 	@Override
 	public String toString() {
-		return "MemberDTO [memberNo=" + memberNo + ", name=" + name + ", phoneNum=" + phoneNum + ", regDate=" + regDate
-				+ ", email=" + email + "]";
+		return "MemberDTO [memberNo=" + memberNo + ", name=" + name + ", userId=" + userId + ", accessToken="
+				+ accessToken + ", regDate=" + regDate + "]";
 	}
+	
+	
 	
 }

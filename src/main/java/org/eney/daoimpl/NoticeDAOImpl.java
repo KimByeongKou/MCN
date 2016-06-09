@@ -35,10 +35,11 @@ public class NoticeDAOImpl implements NoticeDAO{
 		paramMap.put("noti_notice_info", info);
 		
 		//세션 id
-		paramMap.put("noti_member_no", Integer.parseInt(memberNo));
+		paramMap.put("noti_writer_no", Integer.parseInt(memberNo));
 		
 		
-		return sqlSession.insert(namespace+".createNotice", paramMap);
+		sqlSession.insert(namespace+".createNotice", paramMap);
+		return  sqlSession.selectOne(namespace+".searchNewId", paramMap);
 	}
 
 	@Override
@@ -59,25 +60,37 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Override
 	public NoticeDTO searchNoticeByNoticeNo(Integer noticeNo) {
 		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("noti_notice_no", noticeNo);
+		return sqlSession.selectOne(namespace+".searchNoticeByNoticeNo", paramMap);
 	}
 
 	@Override
 	public List<NoticeDTO> searchNoticeByNoticeTitle(String title) {
 		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("noti_title", title);
+		return sqlSession.selectList(namespace+".searchNoticeByNoticeTitle", paramMap);
 	}
 
 	@Override
 	public List<NoticeDTO> searchNoticeByWriterNo(Integer writerNo) {
 		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("noti_member_no", writerNo);
+		return sqlSession.selectList(namespace+".searchNoticeByWriterNo", paramMap);
 	}
 
 	@Override
 	public List<NoticeDTO> searchNoticeByNoticeInfo(String noticeInfo) {
 		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("noti_notice_info", noticeInfo);
+		return sqlSession.selectList(namespace+".searchNoticeByNoticeInfo", paramMap);
 	}
 
 	@Override
@@ -100,7 +113,20 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Override
 	public Integer updateInfo(Integer noticeNo, String info) {
 		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("noti_notice_no", noticeNo);
+		paramMap.put("noti_notice_info", info);
+		return sqlSession.update(namespace+".updateInfo", paramMap);
+	}
+
+	@Override
+	public Integer updateNoticeCnt(Integer noticeNo) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("noti_notice_no", noticeNo);
+		return sqlSession.update(namespace+".updateNoticeCnt", paramMap);
 	}
 
 }

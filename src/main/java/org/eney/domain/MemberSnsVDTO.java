@@ -3,81 +3,81 @@ package org.eney.domain;
 public class MemberSnsVDTO {
 
 
-	private Integer snsAddrNo;
-	private int memberNo;
-	private String email;
+	private Integer memberNo;
+	private String userId;
+	private String accessToken;
 	private String name;
 	private String snsAddr;
-	
+	private String snsName;
 	
 	public MemberSnsVDTO() {
 		super();
+		memberNo = new Integer(0);
+		userId = new String();
+		accessToken = new String();
+		name = new String();
+		snsAddr = new String();
+		snsName = new String();
 	}
 
-
-
-	public MemberSnsVDTO(Integer snsAddrNo, int memberNo, String email, String name, String snsAddr) {
+	public MemberSnsVDTO(Integer memberNo, String userId, String accessToken, String name, String snsAddr,
+			String snsName) {
 		super();
-		this.snsAddrNo = snsAddrNo;
 		this.memberNo = memberNo;
-		this.email = email;
+		this.userId = userId;
+		this.accessToken = accessToken;
 		this.name = name;
 		this.snsAddr = snsAddr;
+		this.snsName = snsName;
 	}
 
-
-	public int getMemberNo() {
+	public Integer getMemberNo() {
 		return memberNo;
 	}
 
-
-	public void setMemberNo(int memberNo) {
+	public void setMemberNo(Integer memberNo) {
 		this.memberNo = memberNo;
 	}
 
-
-	public String getEmail() {
-		return email;
+	public String getUserId() {
+		return userId;
 	}
 
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
+	public String getAccessToken() {
+		return accessToken;
+	}
+
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getSnsAddr() {
 		return snsAddr;
 	}
 
-
 	public void setSnsAddr(String snsAddr) {
 		this.snsAddr = snsAddr;
 	}
 
-	public Integer getSnsAddrNo() {
-		return snsAddrNo;
+	public String getSnsName() {
+		return snsName;
 	}
 
-
-	public void setSnsAddrNo(Integer snsAddrNo) {
-		this.snsAddrNo = snsAddrNo;
+	public void setSnsName(String snsName) {
+		this.snsName = snsName;
 	}
-
-	
-	
-	
-	
 	
 	
 }

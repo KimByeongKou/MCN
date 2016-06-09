@@ -1,6 +1,8 @@
 package org.eney.daoimpl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -31,14 +33,14 @@ public class MemberSnsVDAOImpl implements MemberSnsVDAO{
 
 
 	@Override
-	public List<MemberSnsVDTO> searchMemberSnsViewBySnsAddrNo(Integer addrNo) {
+	public List<MemberSnsVDTO> searchMemberSnsViewBySnsAddr(Integer snsAddr) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
 	@Override
-	public List<MemberSnsVDTO> searchMemberSnsViewBySnsAddr(String snsAddr) {
+	public List<MemberSnsVDTO> searchMemberSnsViewBySnsName(String snsName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -49,6 +51,9 @@ public class MemberSnsVDAOImpl implements MemberSnsVDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	
 	
 	
 

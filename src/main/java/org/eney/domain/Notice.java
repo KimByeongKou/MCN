@@ -1,5 +1,6 @@
 package org.eney.domain;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Notice {
@@ -7,7 +8,7 @@ public class Notice {
 	private Integer writerId;
 	private Integer noticeNo;
 	private String title;
-	private Date writeDate;
+	private String writeDate;
 	private Integer readCnt;
 	private String noticeInfo;
 	
@@ -17,13 +18,13 @@ public class Notice {
 		writerId = new Integer(0);
 		noticeNo = new Integer(0);
 		title = new String();
-		writeDate = new Date();
+		writeDate = new String();
 		readCnt = new Integer(0);
 		noticeInfo = new String();
 	}
 	
 	
-	public Notice(Integer writerId, Integer noticeNo, String title, Date writeDate, Integer readCnt,
+	public Notice(Integer writerId, Integer noticeNo, String title, String writeDate, Integer readCnt,
 			String noticeInfo) {
 		super();
 		this.writerId = writerId;
@@ -51,11 +52,19 @@ public class Notice {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getWriteDate() {
+	public String getWriteDate() {
 		return writeDate;
 	}
 	public void setWriteDate(Date writeDate) {
-		this.writeDate = writeDate;
+		
+		Calendar c = Calendar.getInstance();
+		c.setTime(writeDate);
+		
+		int year = c.get(Calendar.YEAR);
+		int month = c.get(Calendar.MONTH);
+		int day = c.get(Calendar.DAY_OF_MONTH);
+		
+		this.writeDate = "" + year + "-" + month + "-" + day;
 	}
 	public Integer getReadCnt() {
 		return readCnt;
@@ -68,6 +77,13 @@ public class Notice {
 	}
 	public void setNoticeInfo(String noticeInfo) {
 		this.noticeInfo = noticeInfo;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Notice [writerId=" + writerId + ", noticeNo=" + noticeNo + ", title=" + title + ", writeDate="
+				+ writeDate + ", readCnt=" + readCnt + ", noticeInfo=" + noticeInfo + "]";
 	}
 	
 	

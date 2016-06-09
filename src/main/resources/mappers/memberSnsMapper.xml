@@ -14,9 +14,18 @@
 	</resultMap>
 
   	<insert id="createMemberSns">
-  		insert into tbl_sns_info (m_member_no, m_sns_addr)
-  		values (#{m_member_no}, #{m_sns_addr})
+  		insert into tbl_sns_info (m_member_no, m_sns_name, m_sns_addr)
+  		values (#{m_member_no}, #{m_sns_name}, #{m_sns_addr})
   	</insert>
+  	
+  	<select id="searchNewId" resultType="Integer">
+  		select m_sns_addr_no
+  		from tbl_sns_info
+  		where m_member_no = #{m_member_no}
+  		AND m_sns_addr = #{m_sns_addr}
+  		
+  	</select>
+  	
   	
   	<update id="updateMemberSnsAddr">
   		update tbl_sns_info

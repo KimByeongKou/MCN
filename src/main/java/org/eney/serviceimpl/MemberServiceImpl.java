@@ -1,13 +1,13 @@
 package org.eney.serviceimpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.eney.domain.Advertiser;
-import org.eney.domain.AdvertiserApply;
-import org.eney.domain.Creator;
-import org.eney.domain.CreatorApply;
+import javax.inject.Inject;
+
+import org.eney.dao.MemberDAO;
 import org.eney.domain.Member;
-import org.eney.domain.Result;
+import org.eney.domain.MemberDTO;
 import org.eney.service.MemberService;
 import org.springframework.stereotype.Service;
 
@@ -15,46 +15,64 @@ import org.springframework.stereotype.Service;
 @Service
 public class MemberServiceImpl implements MemberService{
 
+	@Inject
+	private MemberDAO dao;
+	
+	
+	
 	@Override
-	public List<Creator> retrieveCreatorService(String kind, String value) {
+	public Integer isMember(String userId) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		MemberDTO dto = dao.searchMemberByUserId(userId);
+		
+		if(dto == null) return -1;
+		return dto.getMemberNo();
 	}
 
 	@Override
-	public List<Advertiser> retrieveAdvertiserService(String kind, String value) {
+	public Integer registerMember(String userId, String accessToken, String name) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.createMember(name, userId, accessToken);
 	}
 
 	@Override
-	public Result updateCreatorService(String memeberNo) {
+	public Integer getMemberNo(String userId) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.searchMemberNo(userId);
 	}
 
 	@Override
-	public Result updateAdvertiserService(String memberNo) {
+	public Integer registerClass(Integer memberNo, String className) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return 1;//dao.createMemberClass(memberNo, className);
 	}
 
 	@Override
-	public CreatorApply getCreatorApply() {
+	public Integer isAdmin(String userId, String name, Integer memberNo) {
 		// TODO Auto-generated method stub
-		return null;
+		Integer res = dao.searchAdmin(userId, name, memberNo);
+		if(res !=null && res > 0) return 1;
+		else return 0;
 	}
 
 	@Override
-	public AdvertiserApply getAdvertiserApply() {
+	public List<Member> searchAllMember() {
 		// TODO Auto-generated method stub
-		return null;
+		List<Member> list = new ArrayList<Member>();
+		List<MemberDTO> dtoList = dao.searchMemberAll();
+		
+		for(MemberDTO dto : dtoList){
+			Member member = new Member(dto.getMemberNo(), dto.getName(),  dto.getUserId(), dto.getAccessToken(), dto.getRegDate().toString());
+			list.add(member);
+		}
+		return list;
 	}
+	
+	
 
-	@Override
-	public Member getMemberInfo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

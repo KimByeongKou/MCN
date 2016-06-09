@@ -1,13 +1,17 @@
 package org.eney.daoimpl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.eney.dao.MemberSnsDAO;
 import org.eney.domain.MemberSnsDTO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class MemberSnsDAOImpl implements MemberSnsDAO{
 
 	@Inject
@@ -16,21 +20,29 @@ public class MemberSnsDAOImpl implements MemberSnsDAO{
 	
 	private static final String namespace =
 			"org.eney.mapper.memberSnsMapper";
-	
-	
-	
-	
+
+
 	@Override
-	public Integer createMemberSns(Integer snsAddrNo, String snsAddr) {
+	public Integer createMemberSns(Integer memberNo, String snsName, String snsAddr) {
+		// TODO Auto-generated method stub
+		//createMemberSns
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("m_member_no", memberNo);
+		paramMap.put("m_sns_name", snsName);
+		paramMap.put("m_sns_addr", snsAddr);
+		
+		return sqlSession.insert(namespace+".createMemberSns",paramMap);
+	}
+
+
+	@Override
+	public Integer updateMemberSnsAddr(Integer memberNo, String snsName, String snsAddr) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Integer updateMemberSnsAddr(Integer snsAddrNo, String snsAddr) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<MemberSnsDTO> searchMemberSnsAll() {
@@ -38,11 +50,13 @@ public class MemberSnsDAOImpl implements MemberSnsDAO{
 		return null;
 	}
 
+
 	@Override
 	public List<MemberSnsDTO> searchMemberSnsByMemberNo(Integer memberNo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 	@Override
 	public List<MemberSnsDTO> searchMemberSnsBySnsAddr(String snsAddr) {
@@ -50,11 +64,20 @@ public class MemberSnsDAOImpl implements MemberSnsDAO{
 		return null;
 	}
 
+
+	@Override
+	public List<MemberSnsDTO> searchMemberSnsBySnsName(String snsName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	@Override
 	public Integer deleteMemberSnsBySnsAddrNo(Integer snsAddrNo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 	@Override
 	public Integer deleteMemberSnsByMemberNo(Integer memberNo) {
@@ -62,4 +85,16 @@ public class MemberSnsDAOImpl implements MemberSnsDAO{
 		return null;
 	}
 
+
+	@Override
+	public Integer deleteMemberSnsByMemberNoSnsName(Integer memberNo, String snsName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
+	
+	
+	
 }

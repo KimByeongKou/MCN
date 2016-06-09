@@ -18,15 +18,17 @@ public class NoticeDAOTest {
 	
 	
 	
-	//@Test
+	@Test
 	public void testCreateNotice() throws Exception{
 		
-		dao.createNotice("22", "testTitle", "test Info");
+		int newId = dao.createNotice("22", "testTitle", "test Info");
+		System.out.println(newId);
+		
 	}
 	
 	//@Test
 	public void testUpdateTitle() throws Exception{
-		dao.updateTitle(1, "modified Title");
+		dao.updateTitle(4, "modified Title");
 	}
 	
 	
@@ -35,7 +37,7 @@ public class NoticeDAOTest {
 		dao.searchNoticeAll();
 	}
 	
-	@Test
+	//@Test
 	public void testDeleteNotice() throws Exception{
 		dao.deleteNotice(3);
 	}

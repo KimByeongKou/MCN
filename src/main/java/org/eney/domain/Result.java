@@ -4,18 +4,7 @@ public class Result {
 
 	private String msg;
 	private Boolean isSuccess;
-	private String newId;
-	
-	
-	public Result() {
-		super();
-	}
-	public Result(String msg, Boolean isSuccess, String newId) {
-		super();
-		this.msg = msg;
-		this.isSuccess = isSuccess;
-		this.newId = newId;
-	}
+	private Integer newId;
 	public String getMsg() {
 		return msg;
 	}
@@ -28,11 +17,22 @@ public class Result {
 	public void setIsSuccess(Boolean isSuccess) {
 		this.isSuccess = isSuccess;
 	}
-	public String getNewId() {
+	public Integer getNewId() {
 		return newId;
 	}
-	public void setNewId(String newId) {
+	public void setNewId(Integer newId) {
 		this.newId = newId;
 	}
+	public Result(String msg, Boolean isSuccess, Integer newId) {
+		super();
+		this.msg = msg;
+		this.isSuccess = isSuccess;
+		this.newId = newId;
+	}
+	public Result() {
+		super();
+	}
+	
+	
 	
 }

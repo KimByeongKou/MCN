@@ -5,74 +5,98 @@
   
 <mapper namespace="org.eney.mapper.memberMapper">
 
-	
-	
+	<!--  RESULT MAP  -->
 	<resultMap id="MemberDTO" type="org.eney.domain.MemberDTO">
 		
 		<result property="memberNo" column="m_member_no" />
 		<result property="name" column="m_name" />
-		<result property="email" column="m_email" />
-		<result property="phoneNum" column="m_phone_num" />
+		<result property="userId" column="m_user_id" />
+		<result property="accessToken" column="m_access_token" />
 		<result property="regDate" column="m_reg_date" />
 		
 	</resultMap>
 
 
 
+	<!--  CREATE  -->
+	<insert id="createMember">
+		insert into tbl_member (m_name, m_user_id, m_access_token) 
+		values (#{m_name}, #{m_user_id}, #{m_access_token})
+	</insert>
+	
 
+	<insert id="createMemberClass">
+		insert into tbl_member_class
+		values (#{m_member_no}, #{m_class_name})
+	</insert>
+
+
+	<!--  RETRIEVE -->
 	<select id="searchMemberAll" resultMap="MemberDTO">
   		select *
   		from tbl_member
   	</select>
-
-
-
-	<insert id="createMember">
-		insert into tbl_member (m_name, m_email, m_phone_num) 
-		values (#{m_name}, #{m_email}, #{m_phone_num})
-	</insert>
-	
-  
   	
-  	<select id="searchMemberOverview" resultType="org.eney.domain.MemberDTO">
+	
+	<select id="searchNewId" resultType="int">
+		select m_member_no
+		from tbl_member
+		WHERE m_user_id = #{m_user_id}
+	</select>
+	  
+  	
+  	<select id="searchMemberByMemberNo" resultMap="MemberDTO">
   		select *
   		from tbl_member
   		where m_member_no = #{m_member_no}
   	</select>
   	
   	
+  	<select id="searchMemberByName" resultMap="MemberDTO">
+  		select *
+  		from tbl_member
+  		where m_name LIKE #{m_name}
+  	</select>
   	
   	
+  	<select id="searchMemberByUserId" resultMap="MemberDTO">
+  		select *
+  		from tbl_member
+  		where m_user_id = #{m_user_id}
+  	</select>
   	
+  	
+  	<select id="searchMemberByAccessToken" resultMap="MemberDTO">
+  		select *
+  		from tbl_member
+  		where m_access_token = #{m_access_token}
+  	</select>
+  	
+  	<select id="searchAdmin" resultType="int">
+  		select m_member_no
+  		from view_member
+  		where m_user_id=#{m_user_id}
+  		and 	m_name = #{m_name} AND m_member_no = #{m_member_no} AND m_class_name = 'admin'
+  	</select>
+  	
+  	<!--  UPDATE -->
   	<update id="updateMemberToCreator">
   		update tbl_member_class
   		set m_class_name = #{creator_string}
   		where m_member_no = #{m_member_no}
-  		
   	</update>
-  	
-  	
   	
   	
   	<update id="updateCreatorToMember">
   		update tbl_member_class
-  		where m_member_no = #{m_member_no}
   		set m_class_name = #{member_string}
-  	</update>
-  	
-  	<update id="updateMemberToAdvertiser">
-  		update tbl_member_class
   		where m_member_no = #{m_member_no}
-  		set m_class_name = #{advertiser_string}
-  	</update>
-  	
-  	<update id="updateAdvertiserToMember">
-  		update tbl_member_class
-  		where m_member_no = #{m_member_no}
-  		set m_class_name = #{member_string}
   	</update>
   	
   	
+  	
+  	
+  	<!--  DELETE -->
   	<delete id="deleteMember">
   		delete from tbl_member
   		where m_member_no = #{m_member_no} 

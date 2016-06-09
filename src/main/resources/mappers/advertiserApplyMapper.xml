@@ -27,6 +27,19 @@
 		values (#{m_member_no}, #{ad_company_name}, #{ad_name}, #{ad_email}, #{ad_phone_num}, #{ad_concept}, #{ad_budget}, #{ad_apply_info},  #{ad_is_accepted})
 	</insert>
 	
+	<select id="searchNewId" resultType="Integer">
+		select ad_apply_no
+		from tbl_ad_apply
+		where m_member_no = #{m_member_no} 
+		AND ad_company_name = #{ad_company_name}
+		AND ad_email = #{ad_email}
+		AND ad_concept = #{ad_concept}
+		ORDER BY ad_apply_time desc
+		Limit 1
+	</select>
+	
+	
+	
 	<delete id="deleteAdvertiserApply">
 		delete from tbl_ad_apply
 		where ad_apply_no = #{ad_apply_no}

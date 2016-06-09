@@ -1,10 +1,9 @@
 package org.eney.dao;
 
-import org.eney.domain.CreatorApply;
+import java.io.InputStream;
 
 public interface CreatorApplyCreateDAO {
 
-	public Integer createCreatorApply(Integer memberNo, String name, String email, String phone, String youtubeAfrice, String facebook, String otherSns, String applyInfo);
-	public Integer createCreatorApply(CreatorApply creatorApply);
+	public Integer createCreatorApply(Integer creatorNo, String name, String email, String phoneNum, String youtubeAddr, String africaAddr, String facebookAddr, String blogAddr, String instaAddr, String otehrSns, String applyInfo, String originalFileName, String storedFileName);
 	
 }

@@ -9,4 +9,5 @@ public interface MemberSnsRetrieveDAO {
 	public List<MemberSnsDTO> searchMemberSnsAll();
 	public List<MemberSnsDTO> searchMemberSnsByMemberNo(Integer memberNo);
 	public List<MemberSnsDTO> searchMemberSnsBySnsAddr(String snsAddr);
+	public List<MemberSnsDTO> searchMemberSnsBySnsName(String snsName);
 }

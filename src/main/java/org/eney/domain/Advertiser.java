@@ -12,7 +12,6 @@ public class Advertiser extends Member{
 
 
 	public Advertiser(Integer memberNo, String name, String email, String phoneNum, String companyName) {
-		super(memberNo, name, email, phoneNum);
 		this.companyName = companyName;
 	}
 

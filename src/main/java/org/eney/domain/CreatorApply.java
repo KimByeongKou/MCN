@@ -1,44 +1,63 @@
 package org.eney.domain;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreatorApply extends Apply{
 
-	private String youtubeAfrica;
-	private String facebook;
-	private String otherSns;
+	private String profileOriginalFileName;
+	private String profileStoredFileName;
 	
+	private List<String> genreList;
+	private List<MemberSns> snsInfo;
 	
 	public CreatorApply() {
 		super();
-		youtubeAfrica = new String();
-		facebook = new String();
-		otherSns = new String();
+		profileOriginalFileName = new String();
+		profileStoredFileName = new String();
+		genreList = new ArrayList<String>();
+		snsInfo = new ArrayList<MemberSns>();
 	}
-	public CreatorApply(Integer applyNo, Integer memberNo, String name, String email, String phoneNum, String applyInfo,
-			Date applyTime, Boolean isAccepted, String youtubeAfrica, String facebook, String otherSns) {
-		super(applyNo, memberNo, name, email, phoneNum, applyInfo, applyTime, isAccepted);
-		this.youtubeAfrica = youtubeAfrica;
-		this.facebook = facebook;
-		this.otherSns = otherSns;
+	public CreatorApply(String profileOriginalFileName, String profileStoredFileName, List<String> genreList,
+			List<MemberSns> snsInfo) {
+		super();
+		this.profileOriginalFileName = profileOriginalFileName;
+		this.profileStoredFileName = profileStoredFileName;
+		this.genreList = genreList;
+		this.snsInfo = snsInfo;
 	}
-	public String getYoutubeAfrica() {
-		return youtubeAfrica;
+	public String getProfileOriginalFileName() {
+		return profileOriginalFileName;
 	}
-	public void setYoutubeAfrica(String youtubeAfrica) {
-		this.youtubeAfrica = youtubeAfrica;
+	public void setProfileOriginalFileName(String profileOriginalFileName) {
+		this.profileOriginalFileName = profileOriginalFileName;
 	}
-	public String getFacebook() {
-		return facebook;
+	public String getProfileStoredFileName() {
+		return profileStoredFileName;
 	}
-	public void setFacebook(String facebook) {
-		this.facebook = facebook;
+	public void setProfileStoredFileName(String profileStoredFileName) {
+		this.profileStoredFileName = profileStoredFileName;
 	}
-	public String getOtherSns() {
-		return otherSns;
+	public List<String> getGenreList() {
+		return genreList;
 	}
-	public void setOtherSns(String otherSns) {
-		this.otherSns = otherSns;
+	public void setGenreList(List<String> genreList) {
+		this.genreList = genreList;
 	}
+	public List<MemberSns> getSnsInfo() {
+		return snsInfo;
+	}
+	public void setSnsInfo(List<MemberSns> snsInfo) {
+		this.snsInfo = snsInfo;
+	}
+	@Override
+	public String toString() {
+		
+		return "CreatorApply [profileOriginalFileName=" + profileOriginalFileName + ", profileStoredFileName="
+				+ profileStoredFileName + ", genreList=" + genreList + ", snsInfo=" + snsInfo + ", applyNo=" + applyNo
+				+ ", memberNo=" + memberNo + ", name=" + name + ", email=" + email + ", phoneNum=" + phoneNum
+				+ ", applyInfo=" + applyInfo + ", applyTime=" + applyTime + ", isAccepted=" + isAccepted + "]";
+	}
+	
 	
 }

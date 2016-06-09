@@ -5,53 +5,120 @@
   
 <mapper namespace="org.eney.mapper.creatorApplyMapper">
 
+
   <resultMap id="CreatorApplyDTO" type="org.eney.domain.CreatorApplyDTO">
-		
-		<result property="applyNo" column="cr_apply_no" />
-		<result property="memberNo" column="m_member_no" />
-		<result property="name" column="cr_name" />
-		<result property="email" column="cr_email" />
-		<result property="phoneNum" column="cr_phone_num" />
-		
-		<result property="otherSns" column="cr_other_sns" />
-		<result property="facebook" column="cr_facebook" />
-		<result property="youtubeAfrica" column="cr_youtube_africe" />
-		<result property="applyInfo" column="cr_apply_info" />
-		<result property="applyTime" column="cr_apply_time" />
-		<result property="isAccepted" column="cr_is_accepted" />
-		
-		
+		<result property="creatorApplyNo" column="cr_apply_no"/>
+		<result property="creatorNo" column="cr_creator_no"/>
+		<result property="name" column="cr_name"/>
+		<result property="email" column="cr_email"/>
+		<result property="phoneNum" column="cr_phone_num"/>
+		<result property="applyInfo" column="cr_apply_info"/>
+		<result property="applyTime" column="cr_apply_time"/>
+		<result property="isAccepted" column="cr_is_accepted"/>
+		<result property="originalFileName" column="cr_original_file_name"/>
+		<result property="storedFileName" column="cr_stored_file_name"/>
+	</resultMap>
+	
+	<resultMap id="CreatorGenreSnsDTO" type="org.eney.domain.CreatorGenreSnsDTO">
+		<result property="creatorApplyNo" column="cr_apply_no"/>
+		<result property="creatorNo" column="cr_creator_no"/>
+		<result property="name" column="cr_name"/>
+		<result property="email" column="cr_email"/>
+		<result property="phoneNum" column="cr_phone_num"/>
+		<result property="applyInfo" column="cr_apply_info"/>
+		<result property="applyTime" column="cr_apply_time"/>
+		<result property="isAccepted" column="cr_is_accepted"/>
+		<result property="originalFileName" column="cr_original_file_name"/>
+		<result property="storedFileName" column="cr_stored_file_name"/>
+		<result property="snsName" column="m_sns_name"/>
+		<result property="snsAddr" column="m_sns_addr"/>
 	</resultMap>
 	
 	
+	<resultMap id="GenreVDTO" type="org.eney.domain.GenreVDTO">
+		<result property="genreNo" column="genre_no"/>
+		<result property="creatorApplyNo" column="cr_apply_no"/>
+		<result property="creatorNo" column="cr_creator_no"/>
+		<result property="genreClassNo" column="genre_class_no"/>
+		<result property="genreClassName" column="genre_class_name"/>
+	</resultMap>
 	
-	<insert id="createCreatorApply" >
-		insert into tbl_creator_apply (m_member_no, cr_name, cr_email, cr_phone_num, cr_youtube_africa, cr_facebook, cr_other_sns, cr_apply_info,  cr_is_accepted)
-		values (#{m_member_no}, #{cr_name}, #{cr_email}, #{cr_phone_num}, #{cr_youtube_africa}, #{cr_facebook}, #{cr_other_sns}, #{cr_apply_info}, #{cr_is_accepted})
+	
+	<resultMap id="MemberSnsVDTO" type="org.eney.domain.MemberSnsVDTO">
+		<result property="memberNo" column="m_member_no"/>
+		<result property="userId" column="m_user_id"/>
+		<result property="accessToken" column="m_access_token"/>
+		<result property="name" column="m_name"/>
+		<result property="snsAddr" column="m_sns_addr"/>
+		<result property="snsName" column="m_sns_name"/>
+	</resultMap>
+	
+	
+	<insert id="createCreatorApply">
+		insert into tbl_creator_apply(cr_creator_no, cr_name, cr_email, cr_phone_num, cr_apply_info, cr_is_accepted, cr_original_file_name, cr_stored_file_name)
+		values (#{cr_creator_no}, #{cr_name}, #{cr_email}, #{cr_phone_num}, #{cr_apply_info}, #{cr_is_accepted},#{cr_original_file_name}, #{cr_stored_file_name})
 	</insert>
-	
-	
-	<delete id="deleteCreatorApply">
-		delete from tbl_creator_apply
-		where cr_apply_no = #{cr_apply_no}
-	</delete>
 	
 	
 	
 	<select id="searchCreatorApplyAll" resultMap="CreatorApplyDTO">
-		select *
-		from tbl_creator_apply
+		SELECT *
+		FROM tbl_creator_apply	
 	</select>
 	
 	
-	<select id="searchCreatorApplyByCreatorApplyNo" resultMap="CreatorApplyDTO">
-		select *
-		from tbl_creator_apply
-		where cr_apply_no = #{cr_apply_no}
+	<select id="searchGenreAll" resultMap="GenreVDTO">
+		SELECT *
+		FROM view_genre
 	</select>
 	
 	
-	<!--  서치 바이 네임 부터~! 하고 테스팅 들어가기~~-->
+	<select id="searchMmeberSnsAll" resultMap="MemberSnsVDTO">
+		SELECT *
+		FROM view_member_sns
+	</select>
+	
+	
+	
+	<select id="searchCreatorApplyByMemberNo" resultMap="CreatorApplyDTO">
+		SELECT *
+		FROM tbl_creator_apply
+		WHERE cr_creator_no = #{cr_creator_no}
+	</select>
+	 
+	 
+	<select id="searchCreatorByGenre" resultMap="CreatorGenreSnsDTO">
+		select creator.*, sns.m_sns_name, sns.m_sns_addr
+		from view_genre genre, tbl_creator_apply creator, view_member_sns sns
+		where genre.genre_class_name= #{genre_class_name} AND creator.cr_is_accepted > 0 AND  sns.m_member_no = creator.cr_creator_no AND genre.cr_creator_no = creator.cr_creator_no
+		ORDER BY cr_creator_no asc;
+	</select>
+	
+	
+	<select id="searchGenreByMemberNo" resultType="String">
+		select genre.genre_class_name
+		from view_genre genre, tbl_creator_apply creator
+		where genre.cr_creator_no = creator.cr_creator_no AND creator.cr_creator_no = #{cr_creator_no};
+	</select>
+	
+	
+	
+	<select id="searchNewApplyId" resultType="Integer">
+		select cr_apply_no
+		from tbl_creator_apply
+		where cr_creator_no = #{cr_creator_no}
+		ORDER BY cr_apply_time desc
+		Limit 1
+	</select>
+	
+	
+	
+	
+	<update id="updateApplyAccepted">
+		update tbl_creator_apply
+		set cr_is_accepted = 1
+		where cr_apply_no = ${cr_apply_no}
+	</update>
 	
 </mapper>  
 

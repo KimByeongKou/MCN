@@ -1,33 +1,41 @@
 package org.eney.domain;
 
+import java.util.Date;
+
 public class MemberVDTO {
 
-	private int memberNo;
+	private Integer memberNo;
 	private String name;
-	private String email;
-	private String phoneNum;
-	private String regDate;
+	private String userId;
+	private String accessToken;
+	private Date regDate;
 	private String className;
 	
 	public MemberVDTO() {
 		super();
+		memberNo = new Integer(0);
+		name = new String();
+		userId = new String();
+		accessToken = new String();
+		regDate = new Date();
+		className = new String();
 	}
 
-	public MemberVDTO(int memberNo, String name, String email, String phoneNum, String regDate, String className) {
+	public MemberVDTO(Integer memberNo, String name, String userId, String accessToken, Date regDate, String className) {
 		super();
 		this.memberNo = memberNo;
 		this.name = name;
-		this.email = email;
-		this.phoneNum = phoneNum;
+		this.userId = userId;
+		this.accessToken = accessToken;
 		this.regDate = regDate;
-		this.className = className;
+		this.setClassName(className);
 	}
 
-	public int getMemberNo() {
+	public Integer getMemberNo() {
 		return memberNo;
 	}
 
-	public void setMemberNo(int memberNo) {
+	public void setMemberNo(Integer memberNo) {
 		this.memberNo = memberNo;
 	}
 
@@ -39,27 +47,27 @@ public class MemberVDTO {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getPhoneNum() {
-		return phoneNum;
+	public String getAccessToken() {
+		return accessToken;
 	}
 
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
 	}
 
-	public String getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(String regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
 

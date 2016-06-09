@@ -2,20 +2,15 @@ package org.eney.service;
 
 import java.util.List;
 
-import org.eney.domain.Advertiser;
-import org.eney.domain.AdvertiserApply;
-import org.eney.domain.Creator;
-import org.eney.domain.CreatorApply;
 import org.eney.domain.Member;
-import org.eney.domain.Result;
 
 public interface MemberService {
 
-	public List<Creator> retrieveCreatorService(String kind, String value);
-	public List<Advertiser> retrieveAdvertiserService(String kind, String value);
-	public Result updateCreatorService(String memeberNo);
-	public Result updateAdvertiserService(String memberNo);
-	public CreatorApply getCreatorApply();
-	public AdvertiserApply getAdvertiserApply();
-	public Member getMemberInfo();
+	public Integer isMember(String accessToken);
+	public Integer registerMember(String userId, String accessToken, String name);
+	public Integer getMemberNo(String userId);
+	public Integer registerClass(Integer memberNo, String className);
+	public Integer isAdmin (String userId, String name, Integer memberNo);
+	
+	public List<Member> searchAllMember();
 }
