@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.eney.mapper.noticeMapper">
+
+
+	<resultMap id="NoticeDTO" type="org.eney.domain.NoticeDTO">
+		
+		<result property="noticeNo" column="noti_notice_no" />
+		<result property="memberNo" column="noti_member_no" />
+		<result property="title" column="noti_title" />
+		<result property="writeDate" column="noti_write_date" />
+		<result property="readCnt" column="noti_read_cnt" />
+		<result property="noticeInfo" column="noti_notice_info" />
+		
+	</resultMap>
+	
+	
+	<select id="searchNoticeAll" resultMap="NoticeDTO">
+  		select * 
+		from tbl_notice
+		ORDER BY noti_notice_no DESC
+  	</select>
+
+
+
+	<select id="searchNoticeByNoticeNo" resultMap="NoticeDTO">
+		select *
+		from tbl_notice
+		where noti_notice_no = #{noti_notice_no}
+	</select>
+
+	<select id="searchNoticeByNoticeTitle" resultMap="NoticeDTO">
+		select *
+		from tbl_notice
+		where noti_title = #{noti_title}
+	</select>
+
+
+	<select id="searchNoticeByWriterNo" resultMap="NoticeDTO">
+		select *
+		from tbl_notice
+		where noti_notice_info = #{noti_notice_info}
+	</select>
+	
+	
+	
+	<select id="searchNoticeByRegDate" resultMap="NoticeDTO">
+		select *
+		from tbl_notice
+		<!--  시작, 끝 날짜로 검색하기 where....hhhh -->
+	</select>
+	
+	<update id="updateNoticeCnt">
+		update tbl_notice
+		set noti_read_cnt = noti_read_cnt + 1
+		where noti_notice_no = #{noti_notice_no};
+	</update>
+	
+
+
+	<insert id="createNotice">
+		insert into tbl_notice (noti_title, noti_notice_info, noti_writer_no )
+		values (#{noti_title}, #{noti_notice_info}, #{noti_writer_no})
+	</insert>
+
+	<select id="searchNewId" resultType="Integer">
+		select noti_notice_no
+		from tbl_notice
+		where noti_title = #{noti_title}
+		AND noti_notice_info = #{noti_notice_info}
+		AND noti_writer_no = #{noti_writer_no}
+		ORDER BY noti_write_date desc
+		Limit 1
+	</select>
+
+
+	<update id="updateTitle">
+		update tbl_notice
+		set noti_title = #{noti_title}
+		where noti_notice_no = #{noti_notice_no} 
+	</update>
+	
+	
+	<update id="updateInfo">
+		update tbl_notice
+		set noti_notice_info = #{noti_notice_info}
+		where noti_notice_no = #{noti_notice_no}
+	</update>
+	
+	<delete id="deleteNotice">
+		delete from tbl_notice
+		where noti_notice_no = #{noti_notice_no}
+	</delete>
+	
+	
+	
+	
+</mapper>  
+

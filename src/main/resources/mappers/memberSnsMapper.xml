@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.eney.mapper.memberSnsMapper">
+	
+	<resultMap id="MemberSnsDTO" type="org.eney.domain.MemberSnsDTO">
+		
+		<result property="snsAddrNo" column="m_sns_addr_no" />
+		<result property="memberNo" column="m_member_no" />
+		<result property="snsAddr" column="m_sns_addr" />
+		
+	</resultMap>
+
+  	<insert id="createMemberSns">
+  		insert into tbl_sns_info (m_member_no, m_sns_name, m_sns_addr)
+  		values (#{m_member_no}, #{m_sns_name}, #{m_sns_addr})
+  	</insert>
+  	
+  	<select id="searchNewId" resultType="Integer">
+  		select m_sns_addr_no
+  		from tbl_sns_info
+  		where m_member_no = #{m_member_no}
+  		AND m_sns_addr = #{m_sns_addr}
+  		
+  	</select>
+  	
+  	
+  	<update id="updateMemberSnsAddr">
+  		update tbl_sns_info
+  		set m_sns_addr = #{m_sns_addr}
+  		where m_sns_addr_no = #{m_sns_addr_no}
+  	</update>
+  
+  	
+  	<select id="searchMemberSnsAll" resultMap="MemberSnsDTO">
+  		select * 
+  		from tbl_sns_info
+  	</select>
+  
+  	<select id="searchMemberSnsByMemberNo" resultMap="MemberSnsDTO">
+  		select * 
+  		from tbl_sns_info
+  		where m_member_no = #{m_member_no}
+  	</select>
+  	
+  	<select id="searchMemberSnsBySnsAddr" resultMap="MemberSnsDTO">
+  		select * 
+  		from tbl_sns_info
+  		where m_sns_addr IN #{m_sns_addr}
+  	</select>
+  	
+  	<delete id="deleteMemberSnsBySnsAddrNo">
+  		delete from tbl_sns_info
+  		where m_sns_addr_no = #{m_sns_addr_no}
+  	</delete>
+  	
+  	
+  	<delete id="deleteMemberSnsByMemberNo">
+  		delete from tbl_sns_info
+  		where m_member_no = #{m_member_no}
+  	</delete>
+  	
+  	
+  	
+  
+</mapper>  
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.eney.mapper.memberSnsViewMapper">
+
+	<resultMap id="MemberSnsVDTO" type="org.eney.domain.MemberSnsVDTO">
+			
+			<result property="snsAddrNo" column="m_sns_addr_no" />
+			<result property="memberNo" column="m_member_no" />
+			<result property="email" column="m_email" />
+			<result property="name" column="m_name" />
+			<result property="snsAddr" column="m_sns_addr" />
+			
+	</resultMap>
+  
+	<select id="searchMemberSnsViewAll" resultMap="MemberSnsVDTO">
+		select *
+		from view_member_sns
+	</select>
+  	
+  	
+  	<select id="searchMemberSnsViewBySnsAddrNo" resultMap="MemberSnsVDTO">
+  		select *
+  		from view_member_sns
+  		where m_sns_addr_no = #{m_sns_addr_no} 
+  	</select>
+  	
+  	<select id="searchMemberSnsViewBySnsAddr" resultMap="MemberSnsVDTO">
+  		select *
+  		from view_member_sns
+  		where m_sns_addr IN #{m_sns_addr}
+  	</select>
+  	
+  	<select id="searchMemberSnsView" resultMap="MemberSnsVDTO">
+  		select *
+  		from view_member_sns
+  		where m_member_no = #{m_member_no}
+  	</select>
+  	
+  	
+</mapper>  
+
