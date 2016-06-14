@@ -57,7 +57,7 @@ public class LoginController {
 			service.registerMember(userId, accessToken, userName);
 			//새로운 회원의 클래스를 member로 지정하는 것은 트리거로 해결된다.
 		}
-		else if(isMember == 44){	//현재 44가 관리자;;
+		else if(isMember == 38){	//현재 44가 관리자;;
 			
 			
 			//관리자일 경우

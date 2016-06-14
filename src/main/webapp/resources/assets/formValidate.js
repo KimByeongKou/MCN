@@ -43,20 +43,45 @@ function validateCreatorForm(){
 	if(valid1 != 2) return false;
 	
 	
+
+	
+	
 	
 	var valid2=0;
+	var tmp=0;
 	
-	valid2 = valid2 +chkUrl(youtubeAddr, "youtube");
-	valid2 = valid2 +chkUrl(africaAddr, "africa");
-	valid2 = valid2 +chkUrl(facebookAddr, "facebook");
-	valid2 = valid2 +chkUrl(instagramAddr, "instagram");
-	valid2 = valid2 +chkUrl(blogAddr, "blog");
-	valid2 = valid2 +chkUrl(otherSns, "otherSns");
+	tmp = chkUrl2(youtubeAddr, "youtube");
+	if(tmp==0) {
+		return false;
+	}
+	valid2 = valid2 + chkUrl2(youtubeAddr, "youtube");
+	
+	tmp = chkUrl2(youtubeAddr, "afreecatv");
+	if(tmp==0) return false;
+	valid2 = valid2 + chkUrl2(africaAddr, "afreecatv");
+	
+	tmp = chkUrl2(youtubeAddr, "facebook");
+	if(tmp==0) return false;
+	valid2 = valid2 + chkUrl2(facebookAddr, "facebook");
+	
+	tmp = chkUrl2(youtubeAddr, "instagram");
+	if(tmp==0) return false;
+	valid2 = valid2 + chkUrl2(instagramAddr, "instagram");
+	
+	tmp = chkUrl(youtubeAddr, "blog");
+	if(tmp==0) return false;
+	valid2 = valid2 + chkUrl(blogAddr, "blog");
+	
+	tmp = chkUrl(youtubeAddr, "otherSns");
+	if(tmp==0) return false;
+	valid2 = valid2 + chkUrl(otherSns, "otherSns");
 	
 	if(valid2 == 0) {
 		alert("최소 1개 이상의 SNS Addr 를 입력해주세요")
 		return false;
 	}
+	
+	
 	
 	
 	
@@ -181,6 +206,7 @@ function valid_email(ele) {
 
 	
 }
+
 function chkUrl(url, snsName){
 	
 	if(url == '' || url == null){
@@ -196,7 +222,28 @@ function chkUrl(url, snsName){
 		} else {
 	
 		return 1;
-	
 		}
+}
+
+
+
+
+function chkUrl2(url, snsName){
+	
+	if(url == '' || url == null){
+		return 0;
+	}
+	
+	
+	var checkUrl = 'http://www.' + snsName + ".com/";
+	var checkUrl2 = 'https://www.' + snsName + ".com/";
+	
+	if(url.indexOf(checkUrl)==0 || url.indexOf(checkUrl2)==0){
+		alert('옳은 형식' + snsName);
+		return 1;
+	}else{
+		alert(snsName + "URL 형식이 맞지 않습니다.\n다시 입력해주세요.\n");
+		return 0;
+	}
 }
 

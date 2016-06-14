@@ -264,7 +264,7 @@ window.fbAsyncInit = function() {
 	              var data = JSON.parse(responseData);
 	              alert(data.result.msg);
 	              $button.attr('disabled', false);
-	              //location.href='/controller';
+	              location.href='/controller';
 	          }, error: function(jqXHR, textStatus, errorThrown) {
 	        	  $button.attr('disabled', false);
 	          }
@@ -756,6 +756,9 @@ window.fbAsyncInit = function() {
   // When the user clicks on <span> (x), close the modal
   span.onclick = function() {
       modal.style.display = "none";
+      $("form").each(function() {  
+          this.reset();  
+       });  
   }
 
   // When the user clicks anywhere outside of the modal, close it
@@ -798,12 +801,15 @@ window.fbAsyncInit = function() {
   // When the user clicks on <span> (x), close the modal
   noticeSpan.onclick = function() {
 	  noticeModal.style.display = "none";
+	  
   }
 
+  
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
       if (event.target == noticeModal) {
     	  noticeModal.style.display = "none";
+    	  
       }
   }
   //end 노티스 모달
