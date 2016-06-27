@@ -82,7 +82,7 @@ public class CreatorApplyDAOImpl implements CreatorApplyDAO{
 		return null;
 	}
 
-
+/*
 	@Override
 	public List<CreatorApplyDTO> searchCreatorByEmail(String email) {
 		// TODO Auto-generated method stub
@@ -103,7 +103,7 @@ public class CreatorApplyDAOImpl implements CreatorApplyDAO{
 		return null;
 	}
 
-
+*/
 	@Override
 	public CreatorApplyDTO searchCreatorApplyByMemberNo(Integer memberNo) {
 		// TODO Auto-generated method stub

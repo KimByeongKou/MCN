@@ -1,14 +1,12 @@
 package org.eney.daoimpl;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.eney.dao.GetInTouchDAO;
-import org.eney.domain.GetInTouchDTO;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -33,7 +31,7 @@ public class GetInTouchDAOImpl implements GetInTouchDAO{
 		paramMap.put("touch_info", info);
 		return sqlSession.insert(namespace+".createGetInTouch", paramMap);
 	}
-
+/*
 	@Override
 	public Integer deleteGetInTouchByTouchNo(Integer touchNo) {
 		// TODO Auto-generated method stub
@@ -75,5 +73,5 @@ public class GetInTouchDAOImpl implements GetInTouchDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+*/
 }

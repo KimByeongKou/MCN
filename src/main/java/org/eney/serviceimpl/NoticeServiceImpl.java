@@ -62,7 +62,7 @@ public class NoticeServiceImpl implements NoticeService{
 			Notice no = new Notice();
 			
 			if(isEncoded){
-				no.setTitle( URLEncoder.encode(dto.getTitle(), "UTF-8"));
+				no.setTitle(URLEncoder.encode(dto.getTitle(), "UTF-8"));
 				no.setNoticeInfo(URLEncoder.encode(dto.getNoticeInfo(), "UTF-8"));
 			}else{
 				no.setTitle(dto.getTitle());

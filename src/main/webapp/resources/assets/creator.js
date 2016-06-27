@@ -42,8 +42,7 @@ window.onload = function(){
 	        		  
 	        		  creatorListHtml = creatorListHtml + "<img src='resources/images/people_logo.png' width='40px' height='50px'/> <br/> 사진/이름</td></tr>"
 	        		  creatorListHtml = creatorListHtml + "<tr><td colspan='6'> 정보 : " + data.creatorList[i].regDate + "등록" + "</td></tr>";
-	        		  creatorListHtml = creatorListHtml + "<tr><td colspan='6'> 이름 : " + data.creatorList[i].name +"</td></tr>";
-	        		  
+	        		  creatorListHtml = creatorListHtml + "<tr><td colspan='6'> 이름 : " + urldecode(data.creatorList[i].name) +"</td></tr>";
 	        		  
 	        		  //data.creatorList[i].memberNo
 	        		  
@@ -99,5 +98,10 @@ window.onload = function(){
 	});
 }
 
+
+
+function urldecode (str) {  
+	  return decodeURIComponent((str + '').replace(/\+/g, '%20'));  // 공백 문자인 + 를 처리하기 위해 +('%20') 을 공백으로 치환
+}
 
 

@@ -23,7 +23,7 @@
 		        value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		        
 		<property name="url" 
-		        value="jdbc:log4jdbc:mysql://127.0.0.1:3306/mcn_migration?autoReconnection=true"></property>
+		        value="jdbc:log4jdbc:mysql://127.0.0.1:3306/mcn?autoReconnection=true"></property>
 		        
 		<property name="username" value="root"></property>
 		<property name="password" value="root"></property>
@@ -58,8 +58,7 @@
     	
 
 	
-	<!--
-	  트랜잭션 설정을 위한 빈. 
+	<!--  트랜잭션 설정을 위한 빈. 
 	Transactional 애노테이션을 사용.
 	-->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

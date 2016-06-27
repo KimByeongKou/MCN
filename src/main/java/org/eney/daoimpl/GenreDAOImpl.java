@@ -1,14 +1,12 @@
 package org.eney.daoimpl;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.eney.dao.GenreDAO;
-import org.eney.domain.GenreDTO;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -32,7 +30,7 @@ public class GenreDAOImpl  implements GenreDAO{
 		paramMap.put("genre_class_no", genreClassNo);
 		return sqlSession.insert(namespace+".createGenre", paramMap);
 	}
-
+/*
 	@Override
 	public Integer deleteGenreByGenreNo(Integer genreNo) {
 		// TODO Auto-generated method stub
@@ -53,7 +51,7 @@ public class GenreDAOImpl  implements GenreDAO{
 
 	@Override
 	public GenreDTO searchGenreByGenreNo(Integer genreNo) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub	
 		return null;
 	}
 
@@ -68,5 +66,5 @@ public class GenreDAOImpl  implements GenreDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+*/
 }

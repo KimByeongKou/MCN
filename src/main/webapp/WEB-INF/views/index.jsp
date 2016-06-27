@@ -97,6 +97,8 @@
                 <li ><a href="#partnersTmp">Partners</a></li>
 				<li ><a href="#contactUs">ContactUs</a></li>
                
+               
+               
                 <c:if test="${sessionScope.userId eq null}">
                  	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> 	
 				</c:if>

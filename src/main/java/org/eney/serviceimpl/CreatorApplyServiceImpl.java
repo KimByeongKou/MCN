@@ -2,6 +2,8 @@ package org.eney.serviceimpl;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -268,17 +270,18 @@ public class CreatorApplyServiceImpl implements CreatorApplyService{
 	@Override
 	public Result changeMemberToCreator(Integer memberNo, Integer applyNo) {
 		// TODO Auto-generated method stub
+		int resCode=0;
 		
 		
 		//멤버 클래스를 크리에이터로 바꾸고
-		mDao.updateMemberToCreator(memberNo);
-		
-		
+		resCode = mDao.updateMemberToCreator(memberNo);
+		if(resCode != 1) return new Result("changeMemberToCreator Fail", false, -1); 
 		
 		//크리에이터 어플라이를 승인으로 바꿔준다.
-		creatorApplydao.updateApplyAccepted(applyNo);
+		resCode = creatorApplydao.updateApplyAccepted(applyNo);
+		if(resCode != 1) return new Result("updateApply Fail", false, -1);
 		
-		return null;
+		return new Result("changeMemberToCreator Success", true, 1);
 	}
 
 
@@ -306,9 +309,16 @@ public class CreatorApplyServiceImpl implements CreatorApplyService{
 				Creator creator = new Creator();
 				creator.setRegDate(dto.getApplyTime().toString());
 				creator.setMemberNo(dto.getCreatorNo());
-				creator.setName(dto.getName());
-				creator.setOriginalFileName(dto.getOriginalFileName());
-				creator.setStoredFileName(dto.getStoredFileName());
+				
+				try {
+					creator.setName(URLEncoder.encode(dto.getName(), "UTF-8"));
+					creator.setOriginalFileName(URLEncoder.encode(dto.getOriginalFileName(), "UTF-8"));
+					creator.setStoredFileName(URLEncoder.encode(dto.getStoredFileName(), "UTF-8"));
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				
 				List<SNSInfo> snsList = new ArrayList<SNSInfo>();
 				snsList.add(new SNSInfo(dto.getSnsName(), dto.getSnsAddr()));

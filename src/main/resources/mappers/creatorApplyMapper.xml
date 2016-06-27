@@ -36,7 +36,6 @@
 	
 	
 	<resultMap id="GenreVDTO" type="org.eney.domain.GenreVDTO">
-		<result property="genreNo" column="genre_no"/>
 		<result property="creatorApplyNo" column="cr_apply_no"/>
 		<result property="creatorNo" column="cr_creator_no"/>
 		<result property="genreClassNo" column="genre_class_no"/>
