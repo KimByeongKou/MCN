@@ -1,14 +1,12 @@
 package org.eney.daoimpl;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.eney.dao.MemberSnsDAO;
-import org.eney.domain.MemberSnsDTO;
 import org.springframework.stereotype.Repository;
 
 
@@ -50,7 +48,8 @@ public class MemberSnsDAOImpl implements MemberSnsDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	/*
 
 	@Override
 	public List<MemberSnsDTO> searchMemberSnsAll() {
@@ -100,7 +99,7 @@ public class MemberSnsDAOImpl implements MemberSnsDAO{
 		return null;
 	}
 
-
+	 */
 	
 	
 	

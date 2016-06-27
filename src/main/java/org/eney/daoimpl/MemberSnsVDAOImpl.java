@@ -2,9 +2,6 @@ package org.eney.daoimpl;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
-import org.apache.ibatis.session.SqlSession;
 import org.eney.dao.MemberSnsVDAO;
 import org.eney.domain.MemberSnsVDTO;
 import org.springframework.stereotype.Repository;
@@ -20,12 +17,11 @@ public class MemberSnsVDAOImpl implements MemberSnsVDAO{
 
 	
 
-	@Inject
-	private SqlSession sqlSession;
+	//@Inject
+	//private SqlSession sqlSession;
 	
 	//MyBatis  사용을 위한  xml Mapper Namespace
-	private static final String namespace =
-			"org.eney.mapper.memberSnsViewMapper";
+	//private static final String namespace = "org.eney.mapper.memberSnsViewMapper";
 
 
 	@Override

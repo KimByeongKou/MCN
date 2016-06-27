@@ -7,26 +7,11 @@ package org.eney.dao;
  */
 public interface MemberSnsDeleteDAO {
 
-	/**
-	 * 
-	 * @param snsAddrNo
-	 * @return
-	 */
+	/*
 	public Integer deleteMemberSnsBySnsAddrNo(Integer snsAddrNo);
 	
-	/**
-	 * 
-	 * @param memberNo
-	 * @return
-	 */
 	public Integer deleteMemberSnsByMemberNo(Integer memberNo);
 	
-	/**
-	 * 
-	 * @param memberNo
-	 * @param snsName
-	 * @return
-	 */
 	public Integer deleteMemberSnsByMemberNoSnsName(Integer memberNo, String snsName);
-	
+	*/
 }

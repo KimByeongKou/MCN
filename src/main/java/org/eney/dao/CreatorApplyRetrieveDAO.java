@@ -20,7 +20,7 @@ public interface CreatorApplyRetrieveDAO {
 	/**
 	 * 모든 크리에이터의 지원서 내용을 리턴
 	 * 
-	 * @return	List<CreatorApplyDTO>	지원서 리스트
+	 * @return	List CreatorApplyDTO 	지원서 리스트
 	 */
 	public List<CreatorApplyDTO> searchCreatorApplyAll();
 	
@@ -36,7 +36,7 @@ public interface CreatorApplyRetrieveDAO {
 	 * 지원자의 이름을 기준으로 지원서를 검색함 
 	 * 
 	 * @param name						지원자 이름
-	 * @return	List<CreatorApplyDTO>	지원서 리스트
+	 * @return	Listm CreatorApplyDTO	지원서 리스트
 	 */
 	public List<CreatorApplyDTO> searchCreatorByName(String name);
 	
@@ -67,7 +67,7 @@ public interface CreatorApplyRetrieveDAO {
 	/**
 	 * 모든 Genre View 의 내용을 리턴 
 	 * 
-	 * @return 	List<GenreVDTO>  GenrVDTO 의 리스트	
+	 * @return 	List GenreVDTO  GenrVDTO 의 리스트	
 	 */
 	public List<GenreVDTO> searchGenreAll();
 	
@@ -75,7 +75,7 @@ public interface CreatorApplyRetrieveDAO {
 	 * 
 	 * 모든 MemberSnsView 의 내용을 리턴
 	 * 
-	 * @return	List<MemberSnsVDTO>  	MemberSnsVDTO 리스트
+	 * @return	List MemberSnsVDTO   	MemberSnsVDTO 리스트
 	 */
 	public List<MemberSnsVDTO> searchMemberSnsAll();
 	
@@ -83,7 +83,7 @@ public interface CreatorApplyRetrieveDAO {
 	 * 장르를 기준으로 크리에이터를 검색
 	 * 
 	 * @param genre							장르 이름
-	 * @return	List<CreatorGenreSnsDTO>	CreatorGenreSnsDTO 리스트
+	 * @return	List CreatorGenreSnsDTO	CreatorGenreSnsDTO 리스트
 	 */
 	public List<CreatorGenreSnsDTO> searchCreatorByGenre(String genre);
 	
@@ -92,7 +92,7 @@ public interface CreatorApplyRetrieveDAO {
 	 * 
 	 * 
 	 * @param memberNo			회원 ID
-	 * @return	List<String>	회원이 속한 장르 리스트
+	 * @return	List String	회원이 속한 장르 리스트
 	 */
 	public List<String> searchGenreByMemberNo(Integer memberNo);
 }

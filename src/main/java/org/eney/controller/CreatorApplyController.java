@@ -44,7 +44,7 @@ public class CreatorApplyController extends MultiActionController{
 	 * @return ModelAndView 형태로 리턴
 	 */
 	@RequestMapping(value = "/applyCreator.do", headers = "content-type=multipart/*", method = RequestMethod.POST)
-	public ModelAndView applyCreator(MultipartHttpServletRequest request, HttpServletResponse response, HttpSession session) 
+	public ModelAndView applyCreator(MultipartHttpServletRequest request, HttpSession session) 
 	{
 		logger.info("applyCreator");
 

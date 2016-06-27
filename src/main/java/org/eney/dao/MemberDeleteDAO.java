@@ -11,7 +11,7 @@ public interface MemberDeleteDAO {
 	/**
 	 * 멤버 id로 멤버 테이블의 레코드를 삭제하는 메서드.
 	 * @param memberNo		멤버 id
-	 * @return
+	 * @return 성공 여부. 성공 시 양수, 실패 시 음수.
 	 */
 	public Integer deleteMember(Integer memberNo);
 	

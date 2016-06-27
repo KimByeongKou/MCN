@@ -14,7 +14,7 @@ public interface MemberSnsCreateDAO {
 	 * @param memberNo	memberNo
 	 * @param snsName	sns이름.
 	 * @param snsAddr	sns주소.
-	 * @return
+	 * @return 성공여부. 성공 시 양수, 실패 시 음수.
 	 */
 	public Integer createMemberSns(Integer memberNo, String snsName, String snsAddr);
 }

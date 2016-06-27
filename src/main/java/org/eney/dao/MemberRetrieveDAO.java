@@ -14,7 +14,7 @@ public interface MemberRetrieveDAO {
 
 	/**
 	 * 모든멤버 테이블의 정보 리턴.
-	 * @return List<MemberDTO> 전체 멤버 리스
+	 * @return List MemberDTO  전체 멤버 리스
 	 */
 	public List<MemberDTO> searchMemberAll();
 	
@@ -45,7 +45,7 @@ public interface MemberRetrieveDAO {
 	 * userName을 인자로 멤버 테이블을 검색함. 
 	 * 인자의 글자가 하나라도 포함되어 있으면 결과 리스트에 포함.
 	 * @param name  유저 이
-	 * @return List<MemberDTO>  멤버 리스
+	 * @return List MemberDTO  멤버 리스트.
 	 */
 	public List<MemberDTO> searchMemberByName(String name);
 	

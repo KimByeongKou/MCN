@@ -10,15 +10,15 @@ public interface MemberUpdateDAO {
 
 	/**
 	 * 일반 멤버를 크리에이터로 승격시키는 메서드.
-	 * @param memberNo 승격시키려는 memberNo
+	 * @param memberNo 승격시키려는 member Id
 	 * @return 성공 여부.
 	 */
 	public int updateMemberToCreator(Integer memberNo);
 	
 	/**
 	 * 
-	 * @param memberNo
-	 * @return
+	 * @param memberNo	멤버 id
+	 * @return	성공 여부.
 	 */
 	public Integer updateCreatorToMember(String memberNo);
 }
