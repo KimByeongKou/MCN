@@ -9,6 +9,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.eney.dao.GetInTouchDAO;
 import org.springframework.stereotype.Repository;
 
+/**
+ * GetInTouchDAO를 구현하는 구체 클래스 Repository
+ * @author KimByeongKou
+ *
+ */
 @Repository
 public class GetInTouchDAOImpl implements GetInTouchDAO{
 
@@ -17,6 +22,7 @@ public class GetInTouchDAOImpl implements GetInTouchDAO{
 	private SqlSession sqlSession;
 	
 	
+	//MyBatis  사용을 위한  xml Mapper Namespace
 	private static final String namespace =
 			"org.eney.mapper.GetInTouchMapper";
 	

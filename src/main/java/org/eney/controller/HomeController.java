@@ -40,6 +40,6 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "test";
+		return "index";
 	}
 }

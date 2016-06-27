@@ -1,11 +1,16 @@
 package org.eney.domain;
 
+/**
+ * tbl_sns_info를 위한 DTO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class MemberSnsDTO {
 
-	private Integer snsAddrNo;
-	private Integer memberNo;
-	private String snsAddr;
-	private String snsName;
+	private Integer snsAddrNo;		// sns Info Id
+	private Integer memberNo;		// member iD
+	private String snsAddr;			// SNS Addr
+	private String snsName;			// SNS Name
 	
 	public MemberSnsDTO() {
 		super();

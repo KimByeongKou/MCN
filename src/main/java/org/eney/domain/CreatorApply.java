@@ -3,13 +3,19 @@ package org.eney.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Creator 지원서에 대한 기본 내용들을 가지고 있는 VO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class CreatorApply extends Apply{
 
-	private String profileOriginalFileName;
-	private String profileStoredFileName;
+	private String profileOriginalFileName;		//지원서 사진이 저장된 원본 파일이름.
+	private String profileStoredFileName;		//지원서 사진이 저장된 서버의 파일 이름.카페24.
 	
-	private List<String> genreList;
-	private List<MemberSns> snsInfo;
+	private List<String> genreList;				//지원의 sns 정보.
+	private List<MemberSns> snsInfo;			//지원서의 genre 정보.
 	
 	public CreatorApply() {
 		super();

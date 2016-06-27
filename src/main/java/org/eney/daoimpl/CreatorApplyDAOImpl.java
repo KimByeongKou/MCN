@@ -15,13 +15,19 @@ import org.eney.domain.MemberSnsVDTO;
 import org.springframework.stereotype.Repository;
 
 
+/**
+ * CreatorApplyDAO를 구현하는 구체 클래스 Repository
+ * @author KimByeongKou
+ *
+ */
 @Repository
 public class CreatorApplyDAOImpl implements CreatorApplyDAO{
 
 	@Inject
-	private SqlSession sqlSession;
+	private SqlSession sqlSession;		//의존성 주입이 완료된 sqlSession
 	
 	
+	//MyBatis  사용을 위한  xml Mapper Namespace
 	private static final String namespace =
 			"org.eney.mapper.creatorApplyMapper";
 

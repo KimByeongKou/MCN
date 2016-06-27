@@ -2,12 +2,17 @@ package org.eney.domain;
 
 import java.util.List;
 
+/**
+ * Creator 기본 내용들을 가지고 있는 VO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class Creator extends Member{
 
-	private String originalFileName;
-	private String storedFileName;
-	private List<SNSInfo> snsList;
-	private List<String> genreList;
+	private String originalFileName;		//지원서 사진이 저장된 원본 파일이름.
+	private String storedFileName;			//지원서 사진이 저장된 서버의 파일 이름.카페24.
+	private List<SNSInfo> snsList;			//지원의 sns 정보.
+	private List<String> genreList;			//지원서의 genre 정보.
 	
 	public Creator() {
 		super();

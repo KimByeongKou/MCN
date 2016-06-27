@@ -2,16 +2,21 @@ package org.eney.domain;
 
 import java.util.Date;
 
+/**
+ * 지원서 기본 내용들을 가지고 있는 상속을 위한 VO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class Apply {
 
-	protected Integer applyNo;
-	protected Integer memberNo;
-	protected String name;
-	protected String email;
-	protected String phoneNum;
-	protected String applyInfo;
-	protected Date applyTime;
-	protected Boolean isAccepted;
+	protected Integer applyNo;		// 지원서 id
+	protected Integer memberNo;		// 멤버 id
+	protected String name;			// 멤버 이름.
+	protected String email;			// 멤버 이메
+	protected String phoneNum;		// 멤버 폰 넘
+	protected String applyInfo;		// 지원서 내용.
+	protected Date applyTime;		// 지원 시점.
+	protected Boolean isAccepted;	// 크리에이터 또는 광고주 수용 여부.
 	
 
 	

@@ -1,12 +1,17 @@
 package org.eney.domain;
 
+/**
+ * 멤버의 정보를 가지는 VO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class Member {
 
-	protected Integer memberNo;
-	protected String name;
-	protected String userId;
-	protected String accessToken;
-	protected String regDate;
+	protected Integer memberNo;		// 멤버 id
+	protected String name;			// member Name
+	protected String userId;		// userId
+	protected String accessToken;	// 로그인 시 accesstoken.
+	protected String regDate;		// 회원 가입 시점.
 	
 	public Member() {
 		super();

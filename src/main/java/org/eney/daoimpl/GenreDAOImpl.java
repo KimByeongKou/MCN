@@ -9,13 +9,21 @@ import org.apache.ibatis.session.SqlSession;
 import org.eney.dao.GenreDAO;
 import org.springframework.stereotype.Repository;
 
+
+
+/**
+ * GenreDAO를 구현하는 구체 클래스 Repository
+ * @author KimByeongKou
+ *
+ */
 @Repository
 public class GenreDAOImpl  implements GenreDAO{
 
 	@Inject
 	private SqlSession sqlSession;
 	
-	
+
+	//MyBatis  사용을 위한  xml Mapper Namespace
 	private static final String namespace =
 			"org.eney.mapper.GenreMapper";
 	

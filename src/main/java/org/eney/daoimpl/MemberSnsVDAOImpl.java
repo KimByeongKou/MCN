@@ -10,6 +10,11 @@ import org.eney.domain.MemberSnsVDTO;
 import org.springframework.stereotype.Repository;
 
 
+/**
+ * MemberSnsVDAO를 구현하는 구체 클래스 Repository
+ * @author KimByeongKou
+ *
+ */
 @Repository
 public class MemberSnsVDAOImpl implements MemberSnsVDAO{
 
@@ -18,7 +23,7 @@ public class MemberSnsVDAOImpl implements MemberSnsVDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
-	
+	//MyBatis  사용을 위한  xml Mapper Namespace
 	private static final String namespace =
 			"org.eney.mapper.memberSnsViewMapper";
 

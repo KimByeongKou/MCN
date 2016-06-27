@@ -2,14 +2,19 @@ package org.eney.domain;
 
 import java.util.Date;
 
+/**
+ * 노티스 테이블과 데이터 교환을 위한 DTO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class NoticeDTO {
 
-	private int noticeNo;
-	private int memberNo;
-	private String title;
-	private Date writeDate;
-	private int readCnt;
-	private String noticeInfo;
+	private int noticeNo;				//노티스 id
+	private int memberNo;				// 글쓴이 id
+	private String title;				// 노티스 타이
+	private Date writeDate;				// 노티스 쓴 날짜.
+	private int readCnt;				// 노티스 조회수.
+	private String noticeInfo;			// 노티스 내용.
 	
 	public NoticeDTO() {
 		super();

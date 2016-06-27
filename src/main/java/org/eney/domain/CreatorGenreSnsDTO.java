@@ -2,20 +2,25 @@ package org.eney.domain;
 
 import java.util.Date;
 
+/**
+ * 크리에이터, 장르, sns 정보를 교환하기 위한 DTO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class CreatorGenreSnsDTO {
 
-	private Integer creatorApplyNo;
-	private Integer creatorNo;
-	private String name;
-	private String email;
-	private String phoneNum;
-	private String applyInfo;
-	private Date applyTime;
-	private Boolean isAccepted;
-	private String originalFileName;
-	private String storedFileName;
-	private String snsName;
-	private String snsAddr;
+	private Integer creatorApplyNo;		// 크리에이터 지원서 id	
+	private Integer creatorNo;			// 크리에이터 멤버 id.
+	private String name;				// 크리에이터 네임.
+	private String email;				// 크리에이터 이메일.
+	private String phoneNum;			//크리에이터 폰 넘버.
+	private String applyInfo;			//크리에이터 지원서 내용.
+	private Date applyTime;				//크리에이터 지원 시점.
+	private Boolean isAccepted;			//크리에이터 수용 여부.
+	private String originalFileName;	//크리에이터 프로필 사진 원본 이름.
+	private String storedFileName;		//크리에이터 프로필 사진 저장소 파일 이름.
+	private String snsName;				//크리에이터 sns 이름.
+	private String snsAddr;				//크리에이터 sns addr.
 	
 	
 	public CreatorGenreSnsDTO() {

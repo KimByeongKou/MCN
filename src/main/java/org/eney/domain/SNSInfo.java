@@ -1,9 +1,14 @@
 package org.eney.domain;
 
+/**
+ * 하나의 sns 에 대한 정보를 담는 VO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class SNSInfo {
 
-	private String snsName;
-	private String snsAddr;
+	private String snsName;		// sns 이름.
+	private String snsAddr;		// sns 주소.
 	
 	public SNSInfo() {
 		super();

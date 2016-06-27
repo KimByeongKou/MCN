@@ -13,6 +13,12 @@ import org.eney.domain.NoticeDTO;
 import org.springframework.stereotype.Repository;
 
 
+
+/**
+ * NoticeDAO를 구현하는 구체 클래스 Repository
+ * @author KimByeongKou
+ *
+ */
 @Repository
 public class NoticeDAOImpl implements NoticeDAO{
 
@@ -20,7 +26,7 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
-	
+	//MyBatis  사용을 위한  xml Mapper Namespace
 	private static final String namespace =
 			"org.eney.mapper.noticeMapper";
 	

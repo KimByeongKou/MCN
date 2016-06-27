@@ -2,14 +2,19 @@ package org.eney.domain;
 
 import java.util.Date;
 
+/**
+ * view_member 테이블과 데이터 교환을 위한 DTO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class MemberVDTO {
 
-	private Integer memberNo;
-	private String name;
-	private String userId;
-	private String accessToken;
-	private Date regDate;
-	private String className;
+	private Integer memberNo;		//멤버 id
+	private String name;			//멤버 이름.
+	private String userId;			//user id
+	private String accessToken;		//accesstoken
+	private Date regDate;			//회원 가입시점.
+	private String className;		//회원의 클래스 이름.(일반 멤버, 크리에이터, 광고주, ...)
 	
 	public MemberVDTO() {
 		super();

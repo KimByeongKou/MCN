@@ -2,13 +2,18 @@ package org.eney.domain;
 
 import java.util.Date;
 
+/**
+ *	문의 사항에 대한 정보를 가지는 DTO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class GetInTouchDTO {
 
-	private Integer touchNo;
-	private Date touchTime;
-	private String phoneNum;
-	private String email;
-	private String info;
+	private Integer touchNo;		// 문의 사항 id
+	private Date touchTime;			// 문의 시점.
+	private String phoneNum;		// 문의자 폰넘버.
+	private String email;			// 문의자 이메일.
+	private String info;			// 문의 내
 	
 	public GetInTouchDTO() {
 		super();

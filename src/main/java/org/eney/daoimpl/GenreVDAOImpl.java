@@ -6,6 +6,12 @@ import org.eney.dao.GenreVDAO;
 import org.eney.domain.GenreVDTO;
 import org.springframework.stereotype.Repository;
 
+
+/**
+ * GenreVDAO를 구현하는 구체 클래스 Repository
+ * @author KimByeongKou
+ *
+ */
 @Repository
 public class GenreVDAOImpl implements GenreVDAO{
 

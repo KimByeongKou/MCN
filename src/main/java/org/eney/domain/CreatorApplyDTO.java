@@ -2,18 +2,24 @@ package org.eney.domain;
 
 import java.util.Date;
 
+
+/**
+ * tbl_creator_apply의 CreatorApplyDTO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class CreatorApplyDTO {
 
-	private Integer creatorApplyNo;
-	private Integer creatorNo;
-	private String name;
-	private String email;
-	private String phoneNum;
-	private String applyInfo;
-	private Date applyTime;
-	private Boolean isAccepted;
-	private String originalFileName;
-	private String storedFileName;
+	private Integer creatorApplyNo;		//크리에이터 지원서 id
+	private Integer creatorNo;			//크리에이터 멤버 id
+	private String name;				//크리에이터 멤버 네임.
+	private String email;				//크리에이터 이메일 주소.
+	private String phoneNum;			//크리에이터 폰 넘버.
+	private String applyInfo;			//크리에이터 지원 내용.
+	private Date applyTime;				//크리에이터 지원 시점.
+	private Boolean isAccepted;			//크리에이터 수용 여부.
+	private String originalFileName;	//크리에이터 프로필 사진 원본 이름.
+	private String storedFileName;		//크리에이터 프로필 사진 저장소 파일 이름.
 	
 	public CreatorApplyDTO() {
 		super();

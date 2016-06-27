@@ -3,14 +3,19 @@ package org.eney.domain;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * 노티스 정보를 가지는 VO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class Notice {
 
-	private Integer writerId;
-	private Integer noticeNo;
-	private String title;
-	private String writeDate;
-	private Integer readCnt;
-	private String noticeInfo;
+	private Integer writerId; 		//글쓴이 멤버 id
+	private Integer noticeNo;		// 노티스 id
+	private String title;			// 노티스 타이틀.
+	private String writeDate;		// 노티스 쓴 날짜.
+	private Integer readCnt;		// 조회수.
+	private String noticeInfo;		// 노티스 내용.
 	
 	
 	public Notice() {

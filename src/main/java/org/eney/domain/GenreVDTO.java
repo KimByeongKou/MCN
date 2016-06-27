@@ -1,11 +1,16 @@
 package org.eney.domain;
 
+/**
+ * 장르와 크리에이터 지원서 정보를 가지는 DTO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class GenreVDTO {
 
-	private Integer creatorApplyNo;
-	private Integer creatorNo;
-	private Integer genreClassNo;
-	private String genreClassName;
+	private Integer creatorApplyNo;		// 지원서 id
+	private Integer creatorNo;			// 지원서 멤버 id
+	private Integer genreClassNo;		// 장르의 클래스 id
+	private String genreClassName;		// 장르 이름.
 	
 	public GenreVDTO() {
 		super();

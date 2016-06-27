@@ -1,14 +1,19 @@
 package org.eney.domain;
 
+/**
+ * view_member_sns 테이블과의 데이터 교환을 위한 DTO 클래스.
+ * @author KimByeongKou
+ *
+ */
 public class MemberSnsVDTO {
 
 
-	private Integer memberNo;
-	private String userId;
-	private String accessToken;
-	private String name;
-	private String snsAddr;
-	private String snsName;
+	private Integer memberNo;		// 멤버 id
+	private String userId;			// user id
+	private String accessToken;		// accessToken.
+	private String name;			// 멤버 name.
+	private String snsAddr;			// snsAddr
+	private String snsName;			// snsName
 	
 	public MemberSnsVDTO() {
 		super();

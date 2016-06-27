@@ -11,6 +11,13 @@ import org.eney.dao.MemberSnsDAO;
 import org.eney.domain.MemberSnsDTO;
 import org.springframework.stereotype.Repository;
 
+
+
+/**
+ * MemberSnsDAO를 구현하는 구체 클래스 Repository
+ * @author KimByeongKou
+ *
+ */
 @Repository
 public class MemberSnsDAOImpl implements MemberSnsDAO{
 
@@ -18,6 +25,7 @@ public class MemberSnsDAOImpl implements MemberSnsDAO{
 	private SqlSession sqlSession;
 	
 	
+	//MyBatis  사용을 위한  xml Mapper Namespace
 	private static final String namespace =
 			"org.eney.mapper.memberSnsMapper";
 

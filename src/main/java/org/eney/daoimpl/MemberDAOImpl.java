@@ -12,6 +12,13 @@ import org.eney.domain.MemberDTO;
 import org.springframework.stereotype.Repository;
 
 
+
+/**
+ * MemberDAO를 구현하는 구체 클래스 Repository
+ * @author KimByeongKou
+ *
+ */
+//MyBatis  사용을 위한  xml Mapper Namespace
 @Repository
 public class MemberDAOImpl implements MemberDAO{
 
@@ -20,7 +27,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
-	
+	//MyBatis  사용을 위한  xml Mapper Namespace
 	private static final String namespace =
 			"org.eney.mapper.memberMapper";
 
@@ -101,12 +108,13 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 
+	/**
 	@Override
 	public MemberDTO searchMemberByAccessToken(String accessToken) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+*/
 
 	@Override
 	public Integer deleteMember(Integer memberNo) {

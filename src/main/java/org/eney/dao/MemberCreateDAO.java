@@ -9,7 +9,6 @@ package org.eney.dao;
 public interface MemberCreateDAO {
 	/**
 	 * 이름, 페이스북 유저 id, 페이스북 accessToken 으로, 회원 가입을 하는 메서드
-	 * 
 	 * @param name			유저 이름
 	 * @param userId		페이스북 id (이메일 아님)
 	 * @param accessToken	로그인 accessToken
