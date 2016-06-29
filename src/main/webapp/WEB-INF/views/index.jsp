@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,9 +9,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Cyrus Studio</title>
-
-
-
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
 <!-- Google fonts -->
@@ -45,20 +39,6 @@
 
 <body>
 <div class="topbar animated fadeInLeftBig"></div>
-
-
-
-
-<script src="resources/assets/creator.js"></script>
-<script src="resources/assets/formValidate.js"></script>
-
-<frameset cols="0,100%" border="0">
-	<frame>
-	<frame src="/">
-	</noframes>
-</frameset>
-
-
 
 
 <!-- Header Starts -->
@@ -107,11 +87,7 @@
                  	<button id="facebookLogout" onclick="logout('${sessionScope.accessToken}', '${sessionScope.userId}', '${sessionScope.userName }');">logout</button>
 					<p>${sessionScope.userName} </p>
 				</c:if>
-				
               </ul>
-              
-             
-			  
             </div>
             </div>
             <!-- #Nav Ends -->
@@ -265,39 +241,18 @@
 
 
 
-<!--  크리에이터 모달 -->
-<div id="creatorModal" class="modalDialog">
-    <div>	
-    	<a id="creatorModalClose" href="#close" title="Close" class="close">X</a>
-    	<br/>
-    	
-    	
-    	<div class="pre-scrollable" id="creatorList">
-				
-    	</div>
-    	
-    	
-    </div>
-</div>
 
 
 
 
 
-
+<!--  노티스 블럭  -->
 <div id="noticeDiv" class="wowload container spacer ">
-
-<h2 class="text-center  wowload fadeInUp">공지 사항</h2>
-<p class="text-center  wowload fadeInLeft">공지 사항입니다.</p>
-<div class="row grid team  wowload fadeInUpBig">	
-
-	
-	<div id="notice" class="text-center row grid team  wowload fadeInUpBig">
-		
+	<h2 class="text-center  wowload fadeInUp">공지 사항</h2>
+	<p class="text-center  wowload fadeInLeft">공지 사항입니다.</p>
+	<div class="row grid team  wowload fadeInUpBig">	
+		<div id="notice" class="text-center row grid team  wowload fadeInUpBig"></div>
 	</div>
- 
-</div>
-
 </div>
 
 
@@ -306,7 +261,11 @@
 <div id="aboutTmp"></div>
 <br/><br/><br/><br/><br/><br/>
 
+
+
+
 <!-- Cirlce Starts -->
+<!--  회사 소개   -->
 <div id="about"  class="container spacer about">
 <h2 class="text-center wowload fadeInUp">누구나 크리에이터가 되어 세상을 즐겁게 하자. <br/><br/> Be creator and Influencer !!!</h2>  
   <div class="row">
@@ -348,6 +307,8 @@
 <div id="partnersTmp"></div>
 <br/><br/><br/><br/><br/><br/>
 
+
+
 <!-- About Starts -->
 <div class="highlight-info">
 <div class="overlay spacer">
@@ -378,18 +339,17 @@
   <div class="clearfix">
     <div class="col-sm-6 partners  wowload fadeInLeft">
          
-         
+         <!--  협력사 로고 사진  -->
          <img src="resources/images/hasung_logo.jpg" alt="partners">
          <img src="resources/images/main_logo.png" alt="partners">
          <img src="resources/images/hitai_logo.png" alt="partners">
          <img src="resources/images/eney_logo.png" alt="partners">
          
          
-         
     </div>
     <div class="col-sm-6">
 
-
+	
     <div id="carousel-testimonials" class="carousel slide testimonails  wowload fadeInRight" data-ride="carousel">
     <div class="carousel-inner">  
       <div class="item active animated bounceInRight row">
@@ -428,31 +388,31 @@
 
     </div>
   </div>
+</div>
+
+
 
 
 <div id="contactUs"></div>
 <br/><br/><br/><br/><br/><br/>
 
 
+
 <!--Contact Starts-->
+<!--  문의 사항  블럭  -->
 <div id="contact" class="spacer">
-
-<div class="container contactform center">
-<h2 class="text-center  wowload fadeInUp">문의사항을 보내주세요. <br/>바로 연락 드리도록 하겠습니다.</h3>
-  <div class="row wowload fadeInLeftBig">      
-      <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
-        <input id="touchName" type="text" placeholder="홍길동">
-        <input id="touchEmail" type="email" placeholder="gildong@gmail.com">
-        <input id="touchPhone" type="tel" placeholder="01x-xxxx-xxxx
-        ">
-        <textarea id="touchMessage" rows="5" placeholder="문의사항"></textarea>
-        <button  id="touchBtn" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Send</button>
-      </div>
-  </div>
-
-
-
-</div>
+	<div class="container contactform center">
+	<h2 class="text-center  wowload fadeInUp">문의사항을 보내주세요. <br/>바로 연락 드리도록 하겠습니다.</h3>
+	  <div class="row wowload fadeInLeftBig">      
+	      <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
+	        <input id="touchName" type="text" placeholder="홍길동">
+	        <input id="touchEmail" type="email" placeholder="gildong@gmail.com">
+	        <input id="touchPhone" type="tel" placeholder="01x-xxxx-xxxx">
+	        <textarea id="touchMessage" rows="5" placeholder="문의사항"></textarea>
+	        <button  id="touchBtn" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Send</button>
+	      </div>
+	  </div>
+	</div>
 </div>
 <!--Contact Ends-->
 
@@ -473,48 +433,13 @@ Copyright 2014 Cyrus Creative Studio. All rights reserved.
 
 
 
-<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
-<!-- 
-<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-    
-    
-    The container for the modal slides
-    <div class="slides"></div>
-     
-    
-    
-    Controls for the borderless lightbox
-    <h3 class="title">Title</h3>
-    <a class="prev"><</a>
-    <a class="next">></a>
-    <a class="close">x</a>
-    
-    
-    The modal dialog, which will be used to wrap the lightbox content    
-    <table>
-    	<tr>
-    		<th>hello</th>
-    		<th>hello</th>
-    		<th>hello</th>
-    		<th>hello</th>
-    		<th>hello</th>
-    	</tr>
-    </table>
-</div>
- -->
 
-
-
-
-<!-- 크리에이터 모달 -->
+<!-- 크리에이터 지원서 모달 -->
 <div id="beCreatorModal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
     <span class="beCreatorClose">close</span>
     <br/>
-	
-	
-	
 	<!--  크리에이터 폼 시작  -->
 	<form name="formName" id="creatorForm" enctype="multipart/form-data" class="elegant-aero" >
 	    
@@ -624,7 +549,14 @@ Copyright 2014 Cyrus Creative Studio. All rights reserved.
 
 
 
-
+<!-- 장르 별  크리에이터  모달 -->
+<div id="creatorModal" class="modalDialog">
+    <div>	
+    	<a id="creatorModalClose" href="#close" title="Close" class="close">X</a>
+    	<br/>
+    	<div class="pre-scrollable" id="creatorList"></div>
+    </div>
+</div>
 
 
 <!-- 노티스 모달 -->
@@ -638,6 +570,8 @@ Copyright 2014 Cyrus Creative Studio. All rights reserved.
    </div>
 </div>
     
+
+
 
 
 <!-- jquery -->
@@ -659,7 +593,8 @@ Copyright 2014 Cyrus Creative Studio. All rights reserved.
 
 <!-- custom script -->
 <script src="resources/assets/script.js"></script>
-
+<script src="resources/assets/creator.js"></script>
+<script src="resources/assets/formValidate.js"></script>
 
 
 </body>

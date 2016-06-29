@@ -109,12 +109,11 @@ public class MemberDAOImpl implements MemberDAO{
 
 
 	/**
-	@Override
 	public MemberDTO searchMemberByAccessToken(String accessToken) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-*/
+	 */
 
 	@Override
 	public Integer deleteMember(Integer memberNo) {

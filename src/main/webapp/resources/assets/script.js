@@ -1,4 +1,7 @@
- jQuery(document).ready(function($) {
+/**
+ * 부트스트랩 셋팅 START
+ */ 
+jQuery(document).ready(function($) {
  
     $(".scroll a, .navbar-brand, .gototop").click(function(event){   
     event.preventDefault();
@@ -7,10 +10,6 @@
     $(this).parents('li').toggleClass('active');
     });
 });
-
-
-
-
 
 
 var wow = new WOW(
@@ -25,8 +24,6 @@ var wow = new WOW(
 wow.init();
 
 
-
-
 $('.carousel').swipe( {
      swipeLeft: function() {
          $(this).carousel('next');
@@ -36,6 +33,10 @@ $('.carousel').swipe( {
      },
      allowPageScroll: 'vertical'
  });
+/**
+ * 부트스트랩 셋팅 END
+ * @param response
+ */
 
 
 
@@ -44,6 +45,129 @@ $('.carousel').swipe( {
 
 
 
+/**
+ * 페이스북 api 
+ * START
+ */
+//This is called with the results from from FB.getLoginStatus().
+function statusChangeCallback(response) {
+console.log('statusChangeCallback');
+console.log(response);
+
+// The response object is returned with a status field that lets the
+// app know the current login status of the person.
+// Full docs on the response object can be found in the documentation
+// for FB.getLoginStatus().
+if (response.status === 'connected') {
+ // Logged into your app and Facebook.
+ testAPI(response);
+} else if (response.status === 'not_authorized') {
+ // The person is logged into Facebook, but not your app.
+ document.getElementById('loginStatus').innerHTML = 'Please log ' +
+   'into this app.';
+} else {
+ // The person is not logged into Facebook, so we're not sure if
+ // they are logged into this app or not.
+ document.getElementById('loginStatus').innerHTML = 'Please log ' +
+   'into Facebook.';
+}
+}
+
+
+//This function is called when someone finishes with the Login
+//Button.  See the onlogin handler attached to it in the sample
+//code below.
+var accessToken;
+function checkLoginState() {
+	FB.getLoginStatus(function(response) {
+	 statusChangeCallback(response);
+	});
+}
+
+
+window.fbAsyncInit = function() {
+ FB.init({
+   appId      : '1770552643166268',
+   cookie     : true,  // enable cookies to allow the server to access // the session
+   xfbml      : true,
+   version    : 'v2.6'
+ });
+
+};
+
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+// Here we run a very simple test of the Graph API after login is
+// successful.  See statusChangeCallback() for when this call is made.
+function testAPI(response) {
+	  accessToken = response.authResponse.accessToken;
+	  
+ console.log('Welcome!  Fetching your information.... ' + accessToken);
+ FB.api('/me', function(response) {
+   console.log('info!');
+   console.log(JSON.stringify(response) +"   " + accessToken);
+   
+   
+   $.ajax({
+       url:'/controller/login',
+       type:'post',
+       data:{"accessToken":accessToken, "userId":response.id, "userName":response.name},
+       success:function(data){
+     	  var res = data.result;
+     	  alert(res);
+     	  if(res=='member'){
+     		  location.href='/controller';
+     	  }else{
+     		 location.replace("./admin");
+     	  }
+     	  
+       }
+   })
+ });
+ 
+ FB.getLoginStatus(function(response) {
+	  if (response.status === 'connected') {
+	    console.log(response.authResponse.accessToken);
+	  }
+	});
+}
+
+
+function logout(accessToken, userId, userName){
+	  
+	  FB.logout(function(response) {
+		});
+	  $.ajax({
+       url:'/controller/logout',
+       type:'post',
+       data:{"accessToken":accessToken, "userId":userId, "userName":userName},
+       success:function(data){
+     	  location.href='/controller';
+       }
+   })
+}
+/**
+ * 페이스북 API
+ * END
+ */
+
+
+
+
+
+
+
+
+/**
+ * 크리에이터 지원서 모달 START
+ */
 //Get the modal
 var modal = document.getElementById('beCreatorModal');
 
@@ -53,13 +177,6 @@ var btn = document.getElementById("beCreatorBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("beCreatorClose")[0];
 
-// When the user clicks the button, open the modal 
-/*
-btn.onclick = function() {
-	alert('${sessionScope.accessToken }');
-	
-}
-*/
 function popupCreatorModal(accessToken){
 	
 	if(accessToken == ''){
@@ -68,8 +185,6 @@ function popupCreatorModal(accessToken){
 	else
 		modal.style.display = "block";
 }
-
-
 
 
 // When the user clicks on <span> (x), close the modal
@@ -83,266 +198,128 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+/**
+ * 크리에이터 지원서 모달 END
+ */
 
 
 
 
 
 
-
-// This is called with the results from from FB.getLoginStatus().
-function statusChangeCallback(response) {
-  console.log('statusChangeCallback');
-  console.log(response);
   
-  // The response object is returned with a status field that lets the
-  // app know the current login status of the person.
-  // Full docs on the response object can be found in the documentation
-  // for FB.getLoginStatus().
-  if (response.status === 'connected') {
-    // Logged into your app and Facebook.
-    testAPI(response);
-  } else if (response.status === 'not_authorized') {
-    // The person is logged into Facebook, but not your app.
-    document.getElementById('loginStatus').innerHTML = 'Please log ' +
-      'into this app.';
-  } else {
-    // The person is not logged into Facebook, so we're not sure if
-    // they are logged into this app or not.
-    document.getElementById('loginStatus').innerHTML = 'Please log ' +
-      'into Facebook.';
-  }
+  
+  
+//프로필 사진 선택 시 호출
+$(document).ready(function(){
+	$('#imageInput').change(function() { 
+		readURL(this); 
+	}); 
+});
+
+
+/*
+* 
+* 요기서 jpg 파일만 받을 수 있도록 처리해주어야함!
+* 
+* 
+*/
+function readURL(input) { 
+    if (input.files && input.files[0]) { 
+    	var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성 
+    	reader.onload = function (e) { 
+    		//파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러 
+    		$('#profileImg').attr('src', e.target.result); 
+    		$('#profileImg').attr('style', "width:100px; height:130px;"); 
+    	}                    
+    	reader.readAsDataURL(input.files[0]); 
+    	//File내용을 읽어 dataURL형식의 문자열로 저장 
+    } 
 }
-
-
-//This function is called when someone finishes with the Login
-// Button.  See the onlogin handler attached to it in the sample
-// code below.
-var accessToken;
-function checkLoginState() {
+  
+  
+  
+/**
+* 크리에이터 지원서 제출하는 AJAX 요청
+*/
+$('#submitBtn').click(function() {
+	var form = document.forms.namedItem("creatorForm"); 
+	var oData = new FormData(form);
 	
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-    
-    
-  });
-  
-  
-  
-}
-
-
-
-window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1770552643166268',
-      cookie     : true,  // enable cookies to allow the server to access // the session
-      xfbml      : true,
-      version    : 'v2.6'
-    });
-
-  };
-
-  
-  
-  
-  
-  
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-  
-  
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI(response) {
-	  accessToken = response.authResponse.accessToken;
+	var $form = $('#creatorForm');
+	var $button = $form.find('button');
+	$button.attr('disabled', true);
 	  
-    console.log('Welcome!  Fetching your information.... ' + accessToken);
-    FB.api('/me', function(response) {
-      console.log('info!');
-      console.log(JSON.stringify(response) +"   " + accessToken);
-      
-      
-      $.ajax({
-          url:'/controller/login',
-          type:'post',
-          data:{"accessToken":accessToken, "userId":response.id, "userName":response.name},
-          success:function(data){
-        	  var res = data.result;
-        	  alert(res);
-        	  if(res=='member'){
-        		  location.href='/controller';
-        	  }else{
-        		 location.replace("./admin");
-        	  }
-        	  
-          }
-      })
-    });
-    
-    FB.getLoginStatus(function(response) {
-  	  if (response.status === 'connected') {
-  	    console.log(response.authResponse.accessToken);
-  	  }
-  	});
-  }
-  
-  
-  
-  function logout(accessToken, userId, userName){
 	  
-	  FB.logout(function(response) {
+	if(validateCreatorForm()){
+		$.ajax({
+			url: './applyCreator.do',
+			type: "post",
+			dataType: "text",
+			data : oData,
+			processData: false,
+			contentType: false,
+			success: function(responseData) {
+				var data = JSON.parse(responseData);
+				alert(data.result.msg);
+				$button.attr('disabled', false);
+				location.href='/controller';
+			}, error: function(jqXHR, textStatus, errorThrown) {
+				$button.attr('disabled', false);
+			}
 		});
-	  $.ajax({
-          url:'/controller/logout',
-          type:'post',
-          data:{"accessToken":accessToken, "userId":userId, "userName":userName},
-          success:function(data){
-        	  location.href='/controller';
-          }
-      })
-  }
+	}else{
+		$button.attr('disabled', false);
+	}
+});
   
   
   
-  
-  /*
-   * 
-   * 요기서 jpg 파일만 받을 수 있도록 처리해주어야함!
-   * 
-   * 
-   */
-  $(document).ready(function(){
-	  $('#imageInput').change(function() { 
-		  readURL(this); 
-	 }); 
+/**
+ * 초기 페이지 요청 시, 노티스 불러오기 및 이벤트 세팅
+ */
+$(window).load(function(){
+	showNotice();
+	$('#touchBtn').click(function(){
+		$('#touchBtn').attr("disabled", true);
+		var name = $('#touchName').val();
+		var email = $('#touchEmail').val();
+		var phone = $('#touchPhone').val();
+		var message = $('#touchMessage').val();
+		  
+		if(validateGetInTouchForm()){
+			$('#touchBtn').text('잠시만 기다려주세요...');
+			$.ajax({
+				url: './getInTouch.do',
+				type: "post",
+				dataType: "text",
+				data : {"name":name, "email":email, "phone":phone, "message":message},
+				success: function(responseData) {
+					var data = JSON.parse(responseData);
+					alert("접수되었습니다. 곧 연락드리도록 하겠습니다.");
+					
+					$('#touchBtn').attr("disabled", false);
+					$('#touchBtn').html('<i class="fa fa-paper-plane"></i> Send');
+				}, error: function(jqXHR, textStatus, errorThrown) {
+					$('#touchBtn').attr("disabled", false);
+					$('#touchBtn').html('<i class="fa fa-paper-plane"></i> Send');
+				}
+			});
+		}else{
+			$('#touchBtn').attr("disabled", false);
+			$('#touchBtn').html('<i class="fa fa-paper-plane"></i> Send');
+		}   
 	});
-  
-  
-  function readURL(input) { 
-      if (input.files && input.files[0]) { 
-          var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성 
-          reader.onload = function (e) { 
-          //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러 
-              $('#profileImg').attr('src', e.target.result); 
-              $('#profileImg').attr('style', "width:100px; height:130px;"); 
-          }                    
-          reader.readAsDataURL(input.files[0]); 
-          //File내용을 읽어 dataURL형식의 문자열로 저장 
-      } 
-  }
+});
   
   
   
-  
- 
-  
-  
-  $('#submitBtn').click(function() {
-	  var form = document.forms.namedItem("creatorForm"); 
-	  var oData = new FormData(form);
-	  
-	  var $form = $('#creatorForm');
-	  var $button = $form.find('button');
-	  $button.attr('disabled', true);
-	  
-	  
-	  if(validateCreatorForm()){
-		  $.ajax({
-	          url: './applyCreator.do',
-	          type: "post",
-	          dataType: "text",
-	          data : oData,
-	          processData: false,
-	          contentType: false,
-	          success: function(responseData) {
-	              var data = JSON.parse(responseData);
-	              alert(data.result.msg);
-	              $button.attr('disabled', false);
-	              location.href='/controller';
-	          }, error: function(jqXHR, textStatus, errorThrown) {
-	        	  $button.attr('disabled', false);
-	          }
-	      });
-	  }else{
-		  $button.attr('disabled', false);
-	  }
-	  
-      
-      
-  });
-  
-  
-  
-  
-  $(window).load(function(){
-	  showNotice();
-	  
-	  $('#touchBtn').click(function(){
-		  
-		  $('#touchBtn').attr("disabled", true);
-		  
-		  
-		  var name = $('#touchName').val();
-		  var email = $('#touchEmail').val();
-		  var phone = $('#touchPhone').val();
-		  var message = $('#touchMessage').val();
-		  
-		  if(validateGetInTouchForm()){
-			  $('#touchBtn').text('잠시만 기다려주세요...');
-			  $.ajax({
-		          url: './getInTouch.do',
-		          type: "post",
-		          dataType: "text",
-		          data : {"name":name, "email":email, "phone":phone, "message":message},
-		          success: function(responseData) {
-		              var data = JSON.parse(responseData);
-		              alert("접수되었습니다. 곧 연락드리도록 하겠습니다.");
-		              
-		              $('#touchBtn').attr("disabled", false);
-		              $('#touchBtn').html('<i class="fa fa-paper-plane"></i> Send');
-		          }, error: function(jqXHR, textStatus, errorThrown) {
-		        	  $('#touchBtn').attr("disabled", false);
-		              $('#touchBtn').html('<i class="fa fa-paper-plane"></i> Send');
-		          }
-		      });
-		  }else{
-			  $('#touchBtn').attr("disabled", false);
-              $('#touchBtn').html('<i class="fa fa-paper-plane"></i> Send');
-		  }
-		  
-		  
-		  
-	  });
-	  
-	  
-	  
-	  
-	});
-  
-  
-  
-  
-  
-  
-  var msg = ''; //상태표시줄에 넣을 메세지
-  function hideURL() {
-  window.status = msg;
-  timerID= setTimeout("hideURL()", 0);
-  }
-  hideURL();
-  
-  
-  
-  function showNotice(){
-	  
-	  var startPage = 1;
-	  //노티스 첫페이지
+/**
+ * 노티스를 불러오는 AJAX 요청
+ */
+function showNotice(){	  
+	  var startPage = 1; 	//노티스 첫페이지
+	 
 	  $.ajax({
 		  url: './showNotice.do',
           type: "get",
@@ -351,6 +328,9 @@ window.fbAsyncInit = function() {
           success: function(responseData) {
               var data = JSON.parse(responseData);
               
+              /**
+               * 데이터를 받아 HTML 생성
+               */
               var noticeHtml = "<table id='noticeTable' class='wowload center pure-table'>";
               noticeHtml = noticeHtml + '<thead>';
               noticeHtml = noticeHtml + '<tr>';
@@ -406,10 +386,7 @@ window.fbAsyncInit = function() {
             	  noticeHtml = noticeHtml + '<th>';
             	  noticeHtml = noticeHtml + data.notiList[i].readCnt;
             	  noticeHtml = noticeHtml + '</th>';
-            	  
-            	  
             	  noticeHtml = noticeHtml + '</tr>';
-            	  
               }
               noticeHtml = noticeHtml + '</tbody>';
               noticeHtml = noticeHtml + '</table>';
@@ -417,6 +394,9 @@ window.fbAsyncInit = function() {
               
               
               
+              /**
+               * 노티스 페이징
+               */
               for(var i=0; i<data.sumCnt; i++){
             	  noticeHtml = noticeHtml + "<a value='" + (i+1) + "' class='noticePage'>";
             	  if(i==0) 
@@ -436,13 +416,15 @@ window.fbAsyncInit = function() {
             	  noticeHtml = noticeHtml + "<a value='11' class='noticePage'> ▶ </a>";
               }
               
-              
               $('#notice').html(noticeHtml);
               
+              
+              /**
+               * 각각의 페이지 클릭 시 이벤트.
+               */
               $('.noticePage').click(function(){
             	 
             	  var pageNo = $(this).attr('value');
-            	  
             	  $.ajax({
 					  url: './showNotice.do',
 			          type: "get",
@@ -456,7 +438,9 @@ window.fbAsyncInit = function() {
               });
               
               
-              
+              /**
+               * 각각의 노티스 제목 클릭 시 이벤트
+               */
               $('.noticeTitle').click(function(){
             	  var noticeNo = $(this).parent().prev().prev().text();
             	  $.ajax({

@@ -6,5 +6,4 @@ org.eney.form
 org.eney.service
 org.eney.serviceimpl
 org.eney.test
-org.eney.test.dao
 org.eney.util

@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-올바르지 않은 접근입니다.
+<h1>올바르지 않은 접근입니다.</h1>
 </body>
 </html>

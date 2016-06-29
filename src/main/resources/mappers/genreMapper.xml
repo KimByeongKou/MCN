@@ -5,7 +5,6 @@
   
 <mapper namespace="org.eney.mapper.GenreMapper">
 
-
 	<insert id="createGenre">
 		insert into tbl_genre (cr_apply_no, cr_creator_no, genre_class_no)
 		values (#{cr_apply_no}, #{cr_creator_no}, #{genre_class_no})

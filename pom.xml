@@ -19,9 +19,9 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+	
+	
 	<dependencies>
-	
-	
 		<!-- taglibs -->
 	    <dependency>
 	        <groupId>taglibs</groupId>
@@ -43,7 +43,7 @@
 	        <artifactId>jstl</artifactId>
 	        <version>1.1.2</version>
 	    </dependency>
-	
+
 	
 		
 		<!-- Spring -->
@@ -118,7 +118,7 @@
 			<artifactId>mail</artifactId>
 			<version>1.5.0-b01</version>
 		</dependency>
-		
+	
 		
 		
 				
@@ -128,9 +128,8 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>	
-		
+			
 		<!-- Logging -->
-		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -167,18 +166,17 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
-
+	
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
+			
 				
-				
-		<!--
-			서블릿 버전을 높여야 한다.
-		 -->
+		<!--서블릿 버전을 높여야 한다.-->
+		
 		<!-- Servlet before-->
 		<!-- <dependency>
 			<groupId>javax.servlet</groupId>
@@ -186,15 +184,15 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency> -->
-		
+			
 		<!-- Servlet after-->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 		</dependency>
-			
-			
+				
+				
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -208,9 +206,7 @@
 		</dependency>
 	
 	
-	<!-- 
-		자세한 로깅을 하기 위해 junit버젼을 높여주는 설정.
-	 -->
+		<!-- 자세한 로깅을 하기 위해 junit버젼을 높여주는 설정. -->
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -218,45 +214,45 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>  
-		
-	    
+			
+		    
 	    <!-- mybatis와 spring을 연동하기 위한 의존성. -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-				
+					
 		<!-- mybatis 사용을 위한 의존 -->	    
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.2.8</version>
 		</dependency>
-				
+					
 		<!-- spring-jdbc 설정을 위한 의존. -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>	
-				
+					
 		<!-- spring-test 를 위한 의존. -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>		
-		
-		
+			
+			
 		<!-- json 데이터 형태로 변환을 위한 의존. -->				
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.5.4</version>
 		</dependency>
-		
-		
+			
+			
 		<!-- 좀 더 자세한 로깅을 위함.
 			추가적으로
 			log4jdbc.log4j2.properties,
@@ -268,7 +264,7 @@
 		  <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
 		  <version>1.16</version>
 		</dependency>
-		
+	
 		
 		
 		
@@ -278,33 +274,31 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+			
 		<!-- Apache Commons IO 추가 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>1.3.2</version>
 		</dependency>
-		
-		
-				
+			
+			
+					
 		<dependency>
 		    <groupId>net.sf.json-lib</groupId>
 		    <artifactId>json-lib-ext-spring</artifactId>
 		    <version>1.0.2</version>
 		</dependency>
-		
-		
-		
-		
+			
+			
+			
+			
 		<dependency>
-		  <!-- jsoup HTML parser library @ http://jsoup.org/ -->
-		  <groupId>org.jsoup</groupId>
-		  <artifactId>jsoup</artifactId>
-		  <version>1.9.2</version>
-		</dependency>
-		
-				      
+			<!-- jsoup HTML parser library @ http://jsoup.org/ -->
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.9.2</version>
+		</dependency>     
 	</dependencies>
 	
 	

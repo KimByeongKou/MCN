@@ -3,29 +3,33 @@
  */
 
   
-	
+/**
+ * 멤버를 크리에이터로 바꾸는 ajax 요청 함수
+ */
   function changeMemberToCreator(){
 	  var data = $('#changeButton1').attr('class');
 	  var mNo = $('#changeButton1').parent().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().text();
 
-	  
-	  
-	  $.ajax({
-		  url: './changeMemberToCreator.do',
-          type: "post",
-          dataType: "text",
-          data : {"applyNo" : data, "memberNo" : mNo},
-          success: function(responseData) {
-              var data = JSON.parse(responseData);
-              alert("요청 성공");
-              
-              location.href="/controller/admin";
+  
+  $.ajax({
+	  url: './changeMemberToCreator.do',
+      type: "post",
+      dataType: "text",
+      data : {"applyNo" : data, "memberNo" : mNo},
+      success: function(responseData) {
+          var data = JSON.parse(responseData);
+          alert("요청 성공");
+          
+          location.href="/controller/admin";
           }, error: function(jqXHR, textStatus, errorThrown) {}
       });
   }
   
   
 
+  /**
+   * 페이지 load 시 호출.
+   */
   window.onload = function(){
 
 	//Get the modal
@@ -39,22 +43,24 @@
 	var span = document.getElementsByClassName("wrtieNoticeClose")[0];
 	var modifySpan = document.getElementsByClassName("modifyNoticeClose")[0];
 	
+	
+	/**
+	 * 게시글 쓰기 모달 관련 코드
+	 */
+	//게시글 쓰기 클릭 이벤트
 	btn.onclick = function() {
-		popupCreatorModal();
-		
+		popupCreatorModal();	
 	}
 	
+	//게시글 쓰기 모달 나타나는 함수
 	function popupCreatorModal(){
 		modal.style.display = "block";
 	}
-	
-	
 	
 	// When the user clicks on <span> (x), close the modal
 	span.onclick = function() {
 	    modal.style.display = "none";
 	}
-	
 	
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
@@ -62,10 +68,11 @@
 	        modal.style.display = "none";
 	    }
 	}
+
 	
-	
-	
-	
+	/**
+	 * 노티스 수정 모달 관련 이벤트
+	 */
 	// When the user clicks on <span> (x), close the modal
 	modifySpan.onclick = function() {
 		modifyModal.style.display = "none";
@@ -81,6 +88,9 @@
 	
 	
 
+	/**
+	 * 노티스 삭제 AJAX 요청 함수
+	 */
 	$('.deleteBtn').click(function(){
 		if(confirm("정말 삭제하시겠습니까?")){
 			var noticeNo = this.value;
@@ -103,6 +113,9 @@
 	
 	
 	
+	/**
+	 * 노티스 수정 모달 팝업 이벤트
+	 */
 	$('.modifyBtn').click(function(){
 		 
 		  var noticeNo = this.value;
@@ -124,6 +137,9 @@
 	
 	
 	
+	/**
+	 * 노티스 수정 AJAX 요청 함수
+	 */
 	$('#modifyNoticeBtn').click(function(){
 		var modifiedTitle = $('#modifyNoticeTitle').val();
 		var modifiedInfo = $('#modifyNoticeInfo').val();
@@ -148,7 +164,9 @@
 
   
   
-  
+  /**
+   * 노티스 추가 AJAX 요청 함수
+   */
   function requestWriteNotice(){
 	  var noticeTitle = $('#noticeTitle').val();
 	  var noticeInfo = $('#noticeInfo').val();

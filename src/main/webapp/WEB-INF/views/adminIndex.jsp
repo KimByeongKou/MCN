@@ -6,20 +6,13 @@
 <head>
 <link href="resources/assets/style.css" rel="stylesheet">
 <link href="resources/assets/admin.css" rel="stylesheet">
-
-
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="resources/assets/admin.js"></script>
-
-
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 
+<%-- 관리자일 경우 메인 화면으로 가는 링크 --%>
 <c:if test="${sessionScope.admin eq 'adminPwd'}">
 	<a href="/controller"> 메인 화면으로 </a>
 </c:if>
@@ -293,11 +286,13 @@
 </div>
 
 
-
-
-
-
 <br/>
 
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="resources/assets/admin.js"></script>
+
 </body>
+
+
+
 </html>

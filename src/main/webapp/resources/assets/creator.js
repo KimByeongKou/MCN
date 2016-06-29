@@ -16,11 +16,19 @@ window.onload = function(){
 	}
 	
 
-	$('.creatorListModal').click(function(){
+	/**
+	 * 크리에이터 장르 클릭 시 장르 별 크리에이터 열람 함수
+	 * 	 
+	 */
+	$('.creatorListModal').click(function(){ 
+		
 		var genre = $(this).parent().attr('id');
 		var creatorListHtml='';
 		
 		
+		/**
+		 * 장르 별 크리에이터 정보를 가져오는 ajax 함수
+		 */
 		$.ajax({
 			  url: './getCreator.do',
 	          type: "get",
@@ -37,14 +45,10 @@ window.onload = function(){
 	        		  
 	        		  creatorListHtml = creatorListHtml + "<tr><td width='12%' rowspan='5'>";
 	        		  
-	        		  //data.creatorList[i].originalFileName	// 사진 파일 부를 때
-	        		  //data.creatorList[i].storedFileName
-	        		  
 	        		  creatorListHtml = creatorListHtml + "<img src='resources/images/people_logo.png' width='40px' height='50px'/> <br/> 사진/이름</td></tr>"
 	        		  creatorListHtml = creatorListHtml + "<tr><td colspan='6'> 정보 : " + data.creatorList[i].regDate + "등록" + "</td></tr>";
 	        		  creatorListHtml = creatorListHtml + "<tr><td colspan='6'> 이름 : " + urldecode(data.creatorList[i].name) +"</td></tr>";
-	        		  
-	        		  //data.creatorList[i].memberNo
+	   
 	        		  
 	        		  creatorListHtml = creatorListHtml + "<tr><td colspan='6'> 장르 : ";
 	        		  
@@ -99,7 +103,11 @@ window.onload = function(){
 }
 
 
-
+/**
+ * 디코딩 함수
+ * @param str	인코딩된 스트링
+ * @returns	디코딩된 스트링
+ */
 function urldecode (str) {  
 	  return decodeURIComponent((str + '').replace(/\+/g, '%20'));  // 공백 문자인 + 를 처리하기 위해 +('%20') 을 공백으로 치환
 }

@@ -89,17 +89,6 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeList;
 	}
 
-	@Override
-	public List<Notice> retrieveNoticeService(String kind, String value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Result updateNoticeService(String kind, String value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Result createNoticeService(Integer memberNo, String title, String info) {
@@ -110,11 +99,6 @@ public class NoticeServiceImpl implements NoticeService{
 		return result; 
 	}
 
-	@Override
-	public Result deleteNoticeService(String kind, String value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Notice getNotice(int noticeNo, boolean isEncoded)  {

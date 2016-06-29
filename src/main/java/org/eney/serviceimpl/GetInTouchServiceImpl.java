@@ -22,7 +22,7 @@ public class GetInTouchServiceImpl  implements GetInTouchService{
 		if(result>0){
 			str = new String(name + "  " + email + "  " + phone + "  " + message);
 			SendMail mailService = new SendMail();
-			mailService.sendMail(str);
+			mailService.sendMail("LaCreator Re:", str);
 			return 1;
 		}else{
 			return 0;
