@@ -6,24 +6,26 @@
 /**
  * 멤버를 크리에이터로 바꾸는 ajax 요청 함수
  */
-  function changeMemberToCreator(){
-	  var data = $('#changeButton1').attr('class');
-	  var mNo = $('#changeButton1').parent().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().text();
-
   
-  $.ajax({
-	  url: './changeMemberToCreator.do',
-      type: "post",
-      dataType: "text",
-      data : {"applyNo" : data, "memberNo" : mNo},
-      success: function(responseData) {
-          var data = JSON.parse(responseData);
-          alert("요청 성공");
-          
-          location.href="/controller/admin";
-          }, error: function(jqXHR, textStatus, errorThrown) {}
-      });
-  }
+  $('.changeButton1').click(function(){
+	  var data = $(this).attr('value');
+	  var mNo = $(this).parent().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().text();
+
+	  $.ajax({
+		  url: './changeMemberToCreator.do',
+	      type: "post",
+	      dataType: "text",
+	      data : {"applyNo" : data, "memberNo" : mNo},
+	      success: function(responseData) {
+	          var data = JSON.parse(responseData);
+	          alert("요청 성공");
+	          
+	          location.href="/controller/admin";
+	          }, error: function(jqXHR, textStatus, errorThrown) {}
+	      });
+
+  });
+  
   
   
 

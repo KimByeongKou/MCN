@@ -95,7 +95,7 @@
 					</th>
 					<th>${list.applyInfo }</th>
 					<th>${list.applyTime } </th>
-					<th><button onclick="changeMemberToCreator()" id="changeButton1" class="${list.applyNo }">체인지</button></th>
+					<th><button onclick="changeMemberToCreator()"  value="${list.applyNo }" class="changeButton1">체인지</button></th>
 				</tr>
 			</c:forEach>
 			
